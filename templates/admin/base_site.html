@@ -1,0 +1,779 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}
+    {% if title %}{{ title }} | {% endif %}Mahashankh Admin
+{% endblock %}
+
+{% block branding %}
+<a href="{% url 'admin:index' %}" class="brand-link">
+    <span class="brand-text font-weight-light">
+        Mahashankh Wallpapers
+    </span>
+</a>
+{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+
+<style>
+
+/* ============================================================
+   MAHASHANKH ADMIN THEME
+   CREAM / WHITE / BROWN
+============================================================ */
+
+:root {
+    --mah-white: #ffffff;
+    --mah-cream: #f7f1e7;
+    --mah-light: #fffdf9;
+    --mah-brown: #6f5138;
+    --mah-dark: #4d3828;
+    --mah-border: #dfd0bd;
+    --mah-text: #514337;
+    --mah-hover: #eee3d3;
+    --mah-soft-brown: #8b6b4d;
+}
+
+
+/* ============================================================
+   BODY
+============================================================ */
+
+body {
+    background: var(--mah-light) !important;
+    color: var(--mah-text) !important;
+}
+
+
+/* ============================================================
+   SIDEBAR
+============================================================ */
+
+.main-sidebar {
+    background: var(--mah-white) !important;
+    border-right: 1px solid var(--mah-border) !important;
+}
+
+.sidebar {
+    background: var(--mah-white) !important;
+}
+
+
+/* ============================================================
+   BRAND
+============================================================ */
+
+.brand-link {
+    background: var(--mah-brown) !important;
+    color: #ffffff !important;
+    border-bottom: 1px solid var(--mah-dark) !important;
+}
+
+.brand-link:hover {
+    background: var(--mah-dark) !important;
+    color: #ffffff !important;
+}
+
+.brand-text {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+
+/* ============================================================
+   SIDEBAR SEARCH
+============================================================ */
+
+.form-control-sidebar {
+    background: var(--mah-light) !important;
+    border: 1px solid var(--mah-border) !important;
+    color: var(--mah-text) !important;
+}
+
+.form-control-sidebar::placeholder {
+    color: #9a8875 !important;
+}
+
+.input-group .btn-sidebar {
+    background: var(--mah-brown) !important;
+    border-color: var(--mah-brown) !important;
+    color: #ffffff !important;
+}
+
+
+/* ============================================================
+   SIDEBAR LINKS
+============================================================ */
+
+.nav-sidebar .nav-link {
+    color: var(--mah-text) !important;
+    margin: 2px 8px !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+}
+
+.nav-sidebar .nav-link:hover {
+    background: var(--mah-hover) !important;
+    color: var(--mah-dark) !important;
+}
+
+.nav-sidebar .nav-link.active {
+    background: var(--mah-brown) !important;
+    color: #ffffff !important;
+}
+
+.nav-sidebar .nav-link.active:hover {
+    background: var(--mah-dark) !important;
+    color: #ffffff !important;
+}
+
+
+/* ============================================================
+   SIDEBAR ICONS
+============================================================ */
+
+.nav-sidebar .nav-icon {
+    color: var(--mah-brown) !important;
+}
+
+.nav-sidebar .nav-link.active .nav-icon {
+    color: #ffffff !important;
+}
+
+
+/* ============================================================
+   CUSTOM SIDEBAR HEADINGS
+============================================================ */
+
+.mah-section-heading {
+    display: block !important;
+    padding: 17px 15px 7px 17px !important;
+    margin: 5px 0 0 !important;
+    color: var(--mah-soft-brown) !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: 1.2px !important;
+    text-transform: uppercase !important;
+    list-style: none !important;
+}
+
+
+/* ============================================================
+   TOP NAVBAR
+============================================================ */
+
+.main-header {
+    background: var(--mah-white) !important;
+    border-bottom: 1px solid var(--mah-border) !important;
+}
+
+.main-header .nav-link {
+    color: var(--mah-brown) !important;
+}
+
+.main-header .nav-link:hover {
+    background: var(--mah-hover) !important;
+    color: var(--mah-dark) !important;
+}
+
+
+/* ============================================================
+   CONTENT
+============================================================ */
+
+.content-wrapper {
+    background: var(--mah-light) !important;
+}
+
+.content-header {
+    background: var(--mah-light) !important;
+}
+
+
+/* ============================================================
+   BREADCRUMBS
+============================================================ */
+
+.breadcrumb {
+    background: transparent !important;
+}
+
+.breadcrumb-item a {
+    color: var(--mah-brown) !important;
+}
+
+.breadcrumb-item.active {
+    color: var(--mah-text) !important;
+}
+
+
+/* ============================================================
+   CARDS
+============================================================ */
+
+.card {
+    border: 1px solid var(--mah-border) !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+}
+
+.card-header {
+    background: var(--mah-cream) !important;
+    color: var(--mah-dark) !important;
+    border-bottom: 1px solid var(--mah-border) !important;
+}
+
+.card-title {
+    color: var(--mah-dark) !important;
+}
+
+
+/* ============================================================
+   ALL PRIMARY BUTTONS → BROWN
+============================================================ */
+
+.btn-primary,
+a.btn-primary,
+button.btn-primary {
+    background: var(--mah-brown) !important;
+    border-color: var(--mah-brown) !important;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background: var(--mah-dark) !important;
+    border-color: var(--mah-dark) !important;
+    color: #ffffff !important;
+}
+
+
+/* ============================================================
+   ADD BUTTONS / SUCCESS BUTTONS → BROWN
+============================================================ */
+
+.btn-success,
+a.btn-success,
+button.btn-success {
+    background: var(--mah-brown) !important;
+    border-color: var(--mah-brown) !important;
+    color: #ffffff !important;
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active,
+.btn-success:focus-visible {
+    background: var(--mah-dark) !important;
+    border-color: var(--mah-dark) !important;
+    color: #ffffff !important;
+}
+
+
+/* ============================================================
+   JAZZMIN / DJANGO ADD BUTTONS
+============================================================ */
+
+.addlink,
+.addlink:hover,
+.addlink:focus {
+    background: var(--mah-brown) !important;
+    border-color: var(--mah-brown) !important;
+    color: #ffffff !important;
+}
+
+.addlink:hover {
+    background: var(--mah-dark) !important;
+}
+
+
+/* ============================================================
+   ACTION BUTTONS
+============================================================ */
+
+.btn-info,
+.btn-warning,
+.btn-danger {
+    border-radius: 5px !important;
+}
+
+
+/* Brown override for common green utility classes */
+
+.bg-success {
+    background-color: var(--mah-brown) !important;
+}
+
+.text-success {
+    color: var(--mah-brown) !important;
+}
+
+.border-success {
+    border-color: var(--mah-brown) !important;
+}
+
+.badge-success {
+    background-color: var(--mah-brown) !important;
+    color: #ffffff !important;
+}
+
+.progress-bar-success {
+    background-color: var(--mah-brown) !important;
+}
+
+
+/* ============================================================
+   TABLES
+============================================================ */
+
+.table thead th {
+    background: var(--mah-cream) !important;
+    color: var(--mah-dark) !important;
+    border-color: var(--mah-border) !important;
+}
+
+.table tbody td {
+    border-color: var(--mah-border) !important;
+}
+
+.table tbody tr:hover {
+    background: #fcf8f1 !important;
+}
+
+
+/* ============================================================
+   FORMS
+============================================================ */
+
+.form-control,
+.custom-select,
+select,
+input,
+textarea {
+    border-color: var(--mah-border) !important;
+    color: var(--mah-text) !important;
+}
+
+.form-control:focus,
+.custom-select:focus,
+select:focus,
+input:focus,
+textarea:focus {
+    border-color: var(--mah-brown) !important;
+    box-shadow: 0 0 0 0.15rem rgba(111, 81, 56, 0.15) !important;
+}
+
+
+/* ============================================================
+   CHECKBOX / RADIO
+============================================================ */
+
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: var(--mah-brown) !important;
+}
+
+
+/* ============================================================
+   PAGINATION
+============================================================ */
+
+.page-link {
+    color: var(--mah-brown) !important;
+    border-color: var(--mah-border) !important;
+    background: var(--mah-white) !important;
+}
+
+.page-link:hover {
+    background: var(--mah-hover) !important;
+    color: var(--mah-dark) !important;
+}
+
+.page-item.active .page-link {
+    background: var(--mah-brown) !important;
+    border-color: var(--mah-brown) !important;
+    color: #ffffff !important;
+}
+
+
+/* ============================================================
+   LINKS
+============================================================ */
+
+a {
+    color: var(--mah-brown);
+}
+
+a:hover {
+    color: var(--mah-dark);
+}
+
+
+/* ============================================================
+   DROPDOWN
+============================================================ */
+
+.dropdown-menu {
+    border: 1px solid var(--mah-border) !important;
+}
+
+.dropdown-item:hover {
+    background: var(--mah-hover) !important;
+    color: var(--mah-dark) !important;
+}
+
+
+/* ============================================================
+   ALERTS
+============================================================ */
+
+.alert-success {
+    background: var(--mah-cream) !important;
+    border-color: var(--mah-border) !important;
+    color: var(--mah-dark) !important;
+}
+
+
+/* ============================================================
+   APP LABELS
+============================================================ */
+
+.nav-header {
+    display: none !important;
+}
+
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+.main-footer {
+    background: var(--mah-white) !important;
+    border-top: 1px solid var(--mah-border) !important;
+    color: var(--mah-text) !important;
+}
+
+</style>
+
+{% endblock %}
+
+
+{% block nav-global %}
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const sidebar =
+        document.querySelector(".main-sidebar .nav-sidebar");
+
+    if (!sidebar) {
+        return;
+    }
+
+
+    /* ========================================================
+       REMOVE OLD CUSTOM HEADINGS
+    ======================================================== */
+
+    sidebar
+        .querySelectorAll(".mah-section-heading")
+        .forEach(function (element) {
+            element.remove();
+        });
+
+
+    /* ========================================================
+       GET SIDEBAR ITEMS
+    ======================================================== */
+
+    const allItems =
+        Array.from(
+            sidebar.querySelectorAll(":scope > li")
+        );
+
+
+    function getText(item) {
+
+        return item.innerText
+            .trim()
+            .replace(/\s+/g, " ")
+            .toLowerCase();
+
+    }
+
+
+    function findItem(searchWords) {
+
+        for (let i = 0; i < allItems.length; i++) {
+
+            const text = getText(allItems[i]);
+
+            let found = true;
+
+            searchWords.forEach(function (word) {
+
+                if (!text.includes(word.toLowerCase())) {
+                    found = false;
+                }
+
+            });
+
+            if (found) {
+                return allItems[i];
+            }
+
+        }
+
+        return null;
+    }
+
+
+    function createHeading(title) {
+
+        const heading =
+            document.createElement("li");
+
+        heading.className =
+            "mah-section-heading";
+
+        heading.textContent =
+            title;
+
+        return heading;
+    }
+
+
+    function insertHeadingBefore(title, item) {
+
+        if (!item) {
+            return;
+        }
+
+        const heading =
+            createHeading(title);
+
+        sidebar.insertBefore(
+            heading,
+            item
+        );
+    }
+
+
+    /* ========================================================
+       MAIN
+    ======================================================== */
+
+    const dashboard =
+        findItem(["dashboard"]);
+
+    if (dashboard) {
+
+        insertHeadingBefore(
+            "MAIN",
+            dashboard
+        );
+
+    }
+
+
+    /* ========================================================
+       LOCATIONS
+    ======================================================== */
+
+    const countries =
+        findItem(["countries"]);
+
+    if (countries) {
+
+        insertHeadingBefore(
+            "LOCATIONS",
+            countries
+        );
+
+    }
+
+
+    /* ========================================================
+       WALLPAPERS
+    ======================================================== */
+
+    const wallpapers =
+        findItem(["wallpapers"]);
+
+    if (wallpapers) {
+
+        insertHeadingBefore(
+            "WALLPAPERS",
+            wallpapers
+        );
+
+    }
+
+
+    /* ========================================================
+       USERS
+    ======================================================== */
+
+    const users =
+        findItem(["users"]);
+
+    if (users) {
+
+        insertHeadingBefore(
+            "USERS",
+            users
+        );
+
+    }
+
+
+    /* ========================================================
+       AI
+    ======================================================== */
+
+    const aiGenerations =
+        findItem(["ai generations"]);
+
+    if (aiGenerations) {
+
+        insertHeadingBefore(
+            "AI",
+            aiGenerations
+        );
+
+    }
+
+
+    /* ========================================================
+       COMMERCE
+    ======================================================== */
+
+    const orders =
+        findItem(["orders"]);
+
+    if (orders) {
+
+        insertHeadingBefore(
+            "COMMERCE",
+            orders
+        );
+
+    }
+
+
+    /* ========================================================
+       SYSTEM
+    ======================================================== */
+
+    const notifications =
+        findItem(["notifications"]);
+
+    if (notifications) {
+
+        insertHeadingBefore(
+            "SYSTEM",
+            notifications
+        );
+
+    }
+
+});
+
+</script>
+
+{% endblock %}
+/* ============================================================
+   MAHASHANKH BUTTON THEME
+============================================================ */
+
+/* ADD BUTTON = BROWN */
+a.addlink,
+.addlink,
+.btn-success {
+    background: #6f5138 !important;
+    border-color: #6f5138 !important;
+    color: #ffffff !important;
+}
+
+a.addlink:hover,
+.addlink:hover,
+.btn-success:hover {
+    background: #4d3828 !important;
+    border-color: #4d3828 !important;
+    color: #ffffff !important;
+}
+
+
+/* SAVE / EDIT / DELETE / ACTION BUTTONS = DARK BROWN */
+
+.submit-row input,
+.submit-row input.default,
+input[type="submit"],
+button[type="submit"],
+.btn-primary,
+.btn-secondary,
+.btn-info,
+.btn-warning,
+.btn-danger,
+.change-form .submit-row input,
+.object-tools a {
+    background: #4d3828 !important;
+    border-color: #4d3828 !important;
+    color: #ffffff !important;
+}
+
+
+/* HOVER = EVEN DARKER */
+
+.submit-row input:hover,
+.submit-row input.default:hover,
+input[type="submit"]:hover,
+button[type="submit"]:hover,
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-info:hover,
+.btn-warning:hover,
+.btn-danger:hover,
+.change-form .submit-row input:hover,
+.object-tools a:hover {
+    background: #39291e !important;
+    border-color: #39291e !important;
+    color: #ffffff !important;
+}
+
+
+/* OBJECT TOOL ADD BUTTON SHOULD STAY BROWN */
+
+.object-tools .addlink {
+    background: #6f5138 !important;
+    border-color: #6f5138 !important;
+    color: #ffffff !important;
+}
+
+.object-tools .addlink:hover {
+    background: #4d3828 !important;
+    border-color: #4d3828 !important;
+}
+
+
+/* GREEN UTILITY COLORS → DARK BROWN */
+
+.bg-success {
+    background-color: #4d3828 !important;
+}
+
+.text-success {
+    color: #4d3828 !important;
+}
+
+.border-success {
+    border-color: #4d3828 !important;
+}
+
+.badge-success {
+    background-color: #4d3828 !important;
+    color: #ffffff !important;
+}

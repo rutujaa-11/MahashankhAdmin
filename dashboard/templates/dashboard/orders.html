@@ -1,0 +1,33 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="flex items-center justify-between mb-6">
+    <h1 class="text-2xl font-bold text-[#4a3f35]">Orders & Transactions</h1>
+    <a href="{% url 'dashboard' %}" class="text-xs font-semibold px-3 py-1.5 bg-[#f4efe6] text-[#6e5f51] border border-[#e8e2d5] rounded-md">Back to Dashboard</a>
+</div>
+<div class="bg-white p-6 rounded-xl border border-[#e8e2d5] shadow-sm">
+    <table class="w-full text-left border-collapse">
+        <thead>
+            <tr class="border-b bg-[#fbf9f5] text-xs font-bold text-[#8c7355] uppercase">
+                <th class="p-3">Order ID</th>
+                <th class="p-3">Customer</th>
+                <th class="p-3">Total Amount</th>
+                <th class="p-3">Status</th>
+                <th class="p-3">Date</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-[#f4efe6] text-sm">
+            {% for o in orders %}
+            <tr>
+                <td class="p-3 text-[#6e5f51]">#{{ o.id }}</td>
+                <td class="p-3 font-semibold text-[#4a3f35]">{{ o.user.username }}</td>
+                <td class="p-3 font-bold text-[#4a3f35]">₹{{ o.total_amount }}</td>
+                <td class="p-3"><span class="bg-[#f4efe6] px-2.5 py-1 rounded text-xs font-bold border border-[#e8e2d5]">{{ o.status }}</span></td>
+                <td class="p-3 text-[#a39585] text-xs">{{ o.created_at|date:"d M Y" }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="5" class="p-4 text-center text-[#a39585]">No orders found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,142 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+
+<div class="flex items-center justify-between mb-6">
+    <div>
+        <h1 class="text-2xl font-bold text-[#4a3f35]">
+            Wallpapers
+        </h1>
+
+        <p class="text-xs text-[#8c7355] mt-1">
+            Manage all wallpapers
+        </p>
+    </div>
+</div>
+
+<div class="bg-white rounded-xl border border-[#e8e2d5] shadow-sm overflow-hidden">
+
+    <div class="overflow-x-auto">
+
+        <table class="w-full text-left">
+
+            <thead>
+                <tr class="border-b border-[#e8e2d5] bg-[#fbf9f5]">
+
+                    <th class="p-4 text-xs font-bold text-[#8c7355] uppercase">
+                        Image
+                    </th>
+
+                    <th class="p-4 text-xs font-bold text-[#8c7355] uppercase">
+                        Title
+                    </th>
+
+                    <th class="p-4 text-xs font-bold text-[#8c7355] uppercase">
+                        Category
+                    </th>
+
+                    <th class="p-4 text-xs font-bold text-[#8c7355] uppercase">
+                        Downloads
+                    </th>
+
+                    <th class="p-4 text-xs font-bold text-[#8c7355] uppercase">
+                        Country
+                    </th>
+
+                    <th class="p-4 text-xs font-bold text-[#8c7355] uppercase">
+                        Uploaded
+                    </th>
+
+                </tr>
+            </thead>
+
+            <tbody class="divide-y divide-[#f4efe6]">
+
+                {% for wallpaper in wallpapers %}
+
+                <tr class="hover:bg-[#fcfbfa]">
+
+                    <!-- IMAGE -->
+                    <td class="p-4">
+
+                        {% if wallpaper.image and wallpaper.image.name %}
+
+                            <img
+                                src="{{ wallpaper.image.url }}"
+                                alt="{{ wallpaper.title }}"
+                                class="w-24 h-16 object-cover rounded-md border border-[#e8e2d5] shadow-sm"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                            >
+
+                            <div
+                                style="display:none;"
+                                class="w-24 h-16 bg-[#f4efe6] rounded-md items-center justify-center text-xs text-[#a39585]"
+                            >
+                                Image unavailable
+                            </div>
+
+                        {% else %}
+
+                            <div class="w-24 h-16 bg-[#f4efe6] rounded-md flex items-center justify-center text-xs text-[#a39585]">
+                                No Image
+                            </div>
+
+                        {% endif %}
+
+                    </td>
+
+                    <!-- TITLE -->
+                    <td class="p-4">
+                        <p class="font-semibold text-[#4a3f35]">
+                            {{ wallpaper.title }}
+                        </p>
+                    </td>
+
+                    <!-- CATEGORY -->
+                    <td class="p-4">
+
+                        <span class="px-2.5 py-1 rounded-md bg-[#f4efe6] text-[#6e5f51] text-xs font-semibold">
+                            {{ wallpaper.category.name }}
+                        </span>
+
+                    </td>
+
+                    <!-- DOWNLOADS -->
+                    <td class="p-4 text-sm text-[#6e5f51]">
+                        {{ wallpaper.downloads }}
+                    </td>
+
+                    <!-- COUNTRY -->
+                    <td class="p-4 text-sm text-[#6e5f51]">
+                        {{ wallpaper.country }}
+                    </td>
+
+                    <!-- UPLOADED -->
+                    <td class="p-4 text-xs text-[#a39585]">
+                        {{ wallpaper.uploaded_at|date:"d M, Y H:i" }}
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td
+                        colspan="6"
+                        class="p-8 text-center text-[#a39585]"
+                    >
+                        No wallpapers found.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,1957 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+
+<style>
+
+    /* =========================================================
+       MAHASHANKH DASHBOARD
+    ========================================================= */
+
+    .mah-dashboard {
+        width: 100%;
+        padding: 10px 4px 35px;
+        font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    .dashboard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(135deg, #ffffff, #f7f1eb);
+        border-radius: 18px;
+        padding: 24px 28px;
+        margin-bottom: 22px;
+        border: 1px solid #eadfd5;
+        box-shadow: 0 8px 25px rgba(70, 45, 25, 0.07);
+    }
+
+    .dashboard-header h1 {
+        margin: 0;
+        color: #4d3323;
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    .dashboard-header p {
+        margin: 6px 0 0;
+        color: #88776a;
+        font-size: 14px;
+    }
+
+    .analytics-badge {
+        background: #5d4030;
+        color: white;
+        padding: 10px 18px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    /* =========================================================
+       METRIC CARDS
+    ========================================================= */
+
+    .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 16px;
+        margin-bottom: 22px;
+    }
+
+    .metric-card {
+        background: #ffffff;
+        border: 1px solid #eee2d8;
+        border-radius: 16px;
+        padding: 20px;
+        min-height: 125px;
+        box-shadow: 0 6px 20px rgba(70, 45, 25, 0.06);
+        transition: 0.2s ease;
+    }
+
+    .metric-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 26px rgba(70, 45, 25, 0.10);
+    }
+
+    .metric-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .metric-title {
+        color: #88776a;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .metric-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: #f1e7df;
+        color: #684936;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+    }
+
+    .metric-number {
+        font-size: 28px;
+        font-weight: 700;
+        color: #3f2a1d;
+        margin-top: 15px;
+    }
+
+    .metric-sub {
+        color: #9b8a7d;
+        font-size: 11px;
+        margin-top: 3px;
+    }
+
+    /* =========================================================
+       COMMON DASHBOARD GRID
+    ========================================================= */
+
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .dashboard-card {
+        background: #ffffff;
+        border: 1px solid #eee2d8;
+        border-radius: 17px;
+        padding: 20px;
+        box-shadow: 0 6px 22px rgba(70, 45, 25, 0.06);
+        min-width: 0;
+    }
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .card-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #4d3323;
+    }
+
+    .card-subtitle {
+        font-size: 11px;
+        color: #9b8a7d;
+        margin-top: 3px;
+    }
+
+    .chart-container {
+        position: relative;
+        height: 300px;
+    }
+
+    .small-chart {
+        height: 280px;
+    }
+
+    .full-width {
+        margin-bottom: 20px;
+    }
+
+    /* =========================================================
+       EQUAL TWO-COLUMN ANALYTICS ROW
+    ========================================================= */
+
+    .analytics-two-column {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+        margin-bottom: 20px;
+        align-items: stretch;
+    }
+
+    .analytics-two-column > .dashboard-card {
+        min-height: 430px;
+        height: 430px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .analytics-two-column .card-header {
+        flex-shrink: 0;
+    }
+
+    .analytics-chart-area {
+        flex: 1;
+        min-height: 0;
+        position: relative;
+    }
+
+    /* =========================================================
+       WORLD MAP
+    ========================================================= */
+
+    .world-map-wrapper {
+        width: 100%;
+        height: 100%;
+        min-height: 340px;
+        border-radius: 14px;
+        overflow: hidden;
+        background: #f8f4f0;
+        border: 1px solid #eee2d8;
+        position: relative;
+    }
+
+    .world-map {
+        width: 100%;
+        height: 100%;
+        min-height: 340px;
+    }
+
+    .map-click-info {
+        position: absolute;
+        left: 16px;
+        bottom: 14px;
+        z-index: 5;
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid #eadfd5;
+        border-radius: 10px;
+        padding: 8px 12px;
+        font-size: 11px;
+        color: #6d594b;
+        box-shadow: 0 4px 14px rgba(70, 45, 25, 0.08);
+        pointer-events: none;
+    }
+
+    /* =========================================================
+       RECENT TABLE
+    ========================================================= */
+
+    .recent-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .recent-table th {
+        text-align: left;
+        padding: 11px;
+        color: #8a786b;
+        font-size: 11px;
+        border-bottom: 1px solid #eee2d8;
+    }
+
+    .recent-table td {
+        padding: 11px;
+        font-size: 12px;
+        color: #59463a;
+        border-bottom: 1px solid #f2ebe5;
+    }
+
+    .wallpaper-thumb {
+        width: 52px;
+        height: 38px;
+        object-fit: cover;
+        border-radius: 7px;
+        border: 1px solid #eadfd5;
+    }
+
+    .no-image {
+        width: 52px;
+        height: 38px;
+        border-radius: 7px;
+        background: #f0e8e2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #927f70;
+        font-size: 9px;
+    }
+
+    /* =========================================================
+       STATUS BADGES
+    ========================================================= */
+
+    .status {
+        display: inline-block;
+        padding: 5px 9px;
+        border-radius: 20px;
+        font-size: 10px;
+        font-weight: 600;
+    }
+
+    .status-completed {
+        background: #e8f5e9;
+        color: #39743d;
+    }
+
+    .status-pending {
+        background: #fff5df;
+        color: #a36b08;
+    }
+
+    .status-processing {
+        background: #e7f0ff;
+        color: #3d64a5;
+    }
+
+    .status-cancelled {
+        background: #fdeaea;
+        color: #a94442;
+    }
+
+    /* =========================================================
+       ACTIVITY
+    ========================================================= */
+
+    .activity-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .activity-item {
+        padding: 12px;
+        border-radius: 11px;
+        background: #faf7f4;
+        border: 1px solid #f0e7df;
+    }
+
+    .activity-user {
+        color: #4d3323;
+        font-weight: 600;
+        font-size: 12px;
+    }
+
+    .activity-action {
+        color: #857366;
+        font-size: 11px;
+        margin-top: 3px;
+    }
+
+    .activity-time {
+        color: #aa9b91;
+        font-size: 10px;
+        margin-top: 5px;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 1200px) {
+
+        .metric-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+    }
+
+    @media (max-width: 900px) {
+
+        .dashboard-grid,
+        .analytics-two-column {
+            grid-template-columns: 1fr;
+        }
+
+        .metric-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .analytics-two-column > .dashboard-card {
+            height: 430px;
+        }
+
+    }
+
+    @media (max-width: 600px) {
+
+        .metric-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .dashboard-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+    }
+
+</style>
+
+
+<div class="mah-dashboard">
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <div class="dashboard-header">
+
+        <div>
+            <h1>Mahashankh Super Admin</h1>
+
+            <p>
+                Wallpaper Management, Users &amp; Analytics
+            </p>
+        </div>
+
+        <div class="analytics-badge">
+            All Time Analytics
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         METRIC CARDS
+    ====================================================== -->
+
+    <div class="metric-grid">
+
+        <div class="metric-card">
+
+            <div class="metric-top">
+
+                <span class="metric-title">
+                    Total Users
+                </span>
+
+                <span class="metric-icon">
+                    <i class="fas fa-users"></i>
+                </span>
+
+            </div>
+
+            <div class="metric-number">
+                {{ dashboard_total_users }}
+            </div>
+
+            <div class="metric-sub">
+                {{ dashboard_active_users }} active users
+            </div>
+
+        </div>
+
+
+        <div class="metric-card">
+
+            <div class="metric-top">
+
+                <span class="metric-title">
+                    Wallpapers
+                </span>
+
+                <span class="metric-icon">
+                    <i class="fas fa-images"></i>
+                </span>
+
+            </div>
+
+            <div class="metric-number">
+                {{ dashboard_total_wallpapers }}
+            </div>
+
+            <div class="metric-sub">
+                {{ dashboard_total_categories }} categories
+            </div>
+
+        </div>
+
+
+        <div class="metric-card">
+
+            <div class="metric-top">
+
+                <span class="metric-title">
+                    AI Generations
+                </span>
+
+                <span class="metric-icon">
+                    <i class="fas fa-wand-magic-sparkles"></i>
+                </span>
+
+            </div>
+
+            <div class="metric-number">
+                {{ dashboard_total_ai }}
+            </div>
+
+            <div class="metric-sub">
+                {{ dashboard_total_images }} generated images
+            </div>
+
+        </div>
+
+
+        <div class="metric-card">
+
+            <div class="metric-top">
+
+                <span class="metric-title">
+                    Orders
+                </span>
+
+                <span class="metric-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </span>
+
+            </div>
+
+            <div class="metric-number">
+                {{ dashboard_total_orders }}
+            </div>
+
+            <div class="metric-sub">
+                {{ dashboard_pending_orders }} pending
+            </div>
+
+        </div>
+
+
+        <div class="metric-card">
+
+            <div class="metric-top">
+
+                <span class="metric-title">
+                    Profit
+                </span>
+
+                <span class="metric-icon">
+                    <i class="fas fa-chart-line"></i>
+                </span>
+
+            </div>
+
+            <div class="metric-number">
+                ₹{{ dashboard_total_profit }}
+            </div>
+
+            <div class="metric-sub">
+                Revenue ₹{{ dashboard_total_revenue }}
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         GROWTH + CATEGORY DONUT
+    ====================================================== -->
+
+    <div class="dashboard-grid">
+
+        <div class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <div class="card-title">
+                        Growth Overview
+                    </div>
+
+                    <div class="card-subtitle">
+                        Users, Wallpapers, Orders &amp; AI generations
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="chart-container">
+                <canvas id="growthChart"></canvas>
+            </div>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <div class="card-title">
+                        Wallpapers by Category
+                    </div>
+
+                    <div class="card-subtitle">
+                        Category distribution
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="chart-container small-chart">
+                <canvas id="categoryChart"></canvas>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         PRODUCTS BY CATEGORY + PRODUCTS BY COUNTRY
+         EQUAL SIZE
+    ====================================================== -->
+
+    <div class="analytics-two-column">
+
+        <!-- PRODUCTS BY CATEGORY -->
+
+        <div class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <div class="card-title">
+                        Products by Category
+                    </div>
+
+                    <div class="card-subtitle">
+                        Wallpaper count across categories
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="analytics-chart-area">
+
+                <canvas id="categoryBarChart"></canvas>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTS BY COUNTRY -->
+
+        <div class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <div class="card-title">
+                        🌍 Products by Country
+                    </div>
+
+                    <div class="card-subtitle">
+                        Click a country to view wallpaper count
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="analytics-chart-area">
+
+                <div class="world-map-wrapper">
+
+                    <div
+                        id="productsWorldMap"
+                        class="world-map">
+                    </div>
+
+                    <div class="map-click-info">
+                        Click any highlighted country
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         ORDER STATUS + USERS BY COUNTRY
+         EQUAL SIZE
+    ====================================================== -->
+
+    <div class="analytics-two-column">
+
+        <!-- ORDER STATUS -->
+
+        <div class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <div class="card-title">
+                        Order Status
+                    </div>
+
+                    <div class="card-subtitle">
+                        Current order distribution
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="analytics-chart-area">
+
+                <canvas id="orderChart"></canvas>
+
+            </div>
+
+        </div>
+
+
+        <!-- USERS BY COUNTRY -->
+
+        <div class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <div class="card-title">
+                        🌍 Users by Country
+                    </div>
+
+                    <div class="card-subtitle">
+                        Click a country to view user count
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="analytics-chart-area">
+
+                <div class="world-map-wrapper">
+
+                    <div
+                        id="usersWorldMap"
+                        class="world-map">
+                    </div>
+
+                    <div class="map-click-info">
+                        Click any highlighted country
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         REVENUE + PROFIT / LOSS
+    ====================================================== -->
+
+    <div class="dashboard-card full-width">
+
+        <div class="card-header">
+
+            <div>
+
+                <div class="card-title">
+                    Revenue &amp; Profit / Loss
+                </div>
+
+                <div class="card-subtitle">
+                    Financial performance
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="chart-container">
+            <canvas id="financeChart"></canvas>
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         RECENT WALLPAPERS + AI ACTIVITY
+    ====================================================== -->
+
+    <div class="dashboard-grid">
+
+        <div class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <div class="card-title">
+                        Recent Wallpapers
+                    </div>
+
+                    <div class="card-subtitle">
+                        Latest uploaded wallpapers
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <table class="recent-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Downloads</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for wallpaper in recent_wallpapers %}
+
+                    <tr>
+
+                        <td>
+
+                            {% if wallpaper.image %}
+
+                            <img
+                                src="{{ wallpaper.image.url }}"
+                                class="wallpaper-thumb"
+                                alt="{{ wallpaper.title }}"
+                            >
+
+                            {% else %}
+
+                            <div class="no-image">
+                                No Image
+                            </div>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+                            {{ wallpaper.title|truncatechars:25 }}
+                        </td>
+
+                        <td>
+
+                            {% if wallpaper.category %}
+                                {{ wallpaper.category.name }}
+                            {% else %}
+                                —
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+                            {{ wallpaper.downloads }}
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="4">
+                            No wallpapers available.
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <div class="card-title">
+                        Recent AI Activity
+                    </div>
+
+                    <div class="card-subtitle">
+                        Latest AI generation requests
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="activity-list">
+
+                {% for item in recent_ai %}
+
+                <div class="activity-item">
+
+                    <div class="activity-user">
+                        {{ item.user|default:"Guest User" }}
+                    </div>
+
+                    <div class="activity-action">
+                        {{ item.prompt|truncatechars:65 }}
+                    </div>
+
+                    <div class="activity-time">
+                        {{ item.created_at|date:"d M Y, h:i A" }}
+                    </div>
+
+                </div>
+
+                {% empty %}
+
+                <div class="activity-item">
+                    No AI activity available.
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         USER ACTIVITY + RECENT ORDERS
+    ====================================================== -->
+
+    <div class="dashboard-grid">
+
+        <div class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <div class="card-title">
+                        Recent User Activity
+                    </div>
+
+                    <div class="card-subtitle">
+                        Login and activity tracking
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="activity-list">
+
+                {% for item in recent_activity %}
+
+                <div class="activity-item">
+
+                    <div class="activity-user">
+                        {{ item.username }}
+                    </div>
+
+                    <div class="activity-action">
+                        {{ item.action }}
+                    </div>
+
+                    <div class="activity-time">
+
+                        {% if item.ip_address %}
+                            IP: {{ item.ip_address }} ·
+                        {% endif %}
+
+                        {{ item.timestamp|date:"d M Y, h:i A" }}
+
+                    </div>
+
+                </div>
+
+                {% empty %}
+
+                <div class="activity-item">
+                    No user activity available.
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <div class="card-title">
+                        Recent Orders
+                    </div>
+
+                    <div class="card-subtitle">
+                        Latest commerce activity
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <table class="recent-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Order</th>
+                        <th>User</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for order in recent_orders %}
+
+                    <tr>
+
+                        <td>
+                            {{ order.order_number }}
+                        </td>
+
+                        <td>
+                            {{ order.user }}
+                        </td>
+
+                        <td>
+                            ₹{{ order.total_amount }}
+                        </td>
+
+                        <td>
+
+                            {% if order.status == "Completed" %}
+
+                                <span class="status status-completed">
+                                    Completed
+                                </span>
+
+                            {% elif order.status == "Pending" %}
+
+                                <span class="status status-pending">
+                                    Pending
+                                </span>
+
+                            {% elif order.status == "Processing" %}
+
+                                <span class="status status-processing">
+                                    Processing
+                                </span>
+
+                            {% else %}
+
+                                <span class="status status-cancelled">
+                                    {{ order.status }}
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="4">
+                            No orders available.
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     CHART.JS
+========================================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+    /* =========================================================
+       GROWTH CHART
+    ========================================================= */
+
+    const growthLabels = {{ growth_labels|safe }};
+
+    const wallpaperGrowth = {{ wallpaper_growth|safe }};
+
+    const orderGrowth = {{ order_growth|safe }};
+
+    const aiGrowth = {{ ai_growth|safe }};
+
+    const userGrowth = {{ user_growth|safe }};
+
+
+    new Chart(
+        document.getElementById("growthChart"),
+        {
+            type: "line",
+
+            data: {
+
+                labels: growthLabels,
+
+                datasets: [
+
+                    {
+                        label: "Users",
+                        data: userGrowth,
+                        tension: 0.4,
+                        fill: true,
+                        borderWidth: 2
+                    },
+
+                    {
+                        label: "Wallpapers",
+                        data: wallpaperGrowth,
+                        tension: 0.4,
+                        fill: true,
+                        borderWidth: 2
+                    },
+
+                    {
+                        label: "Orders",
+                        data: orderGrowth,
+                        tension: 0.4,
+                        fill: true,
+                        borderWidth: 2
+                    },
+
+                    {
+                        label: "AI Generations",
+                        data: aiGrowth,
+                        tension: 0.4,
+                        fill: true,
+                        borderWidth: 2
+                    }
+
+                ]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                interaction: {
+                    mode: "index",
+                    intersect: false
+                },
+
+                plugins: {
+
+                    legend: {
+                        position: "top"
+                    }
+
+                },
+
+                scales: {
+
+                    y: {
+                        beginAtZero: true
+                    }
+
+                }
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       CATEGORY DONUT
+    ========================================================= */
+
+    const categoryLabels =
+        {{ category_labels|safe }};
+
+    const categoryValues =
+        {{ category_values|safe }};
+
+
+    new Chart(
+        document.getElementById("categoryChart"),
+        {
+            type: "doughnut",
+
+            data: {
+
+                labels: categoryLabels,
+
+                datasets: [
+                    {
+                        data: categoryValues,
+                        borderWidth: 2
+                    }
+                ]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                cutout: "62%",
+
+                plugins: {
+
+                    legend: {
+                        position: "bottom"
+                    }
+
+                }
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       CATEGORY BAR
+    ========================================================= */
+
+    new Chart(
+        document.getElementById("categoryBarChart"),
+        {
+            type: "bar",
+
+            data: {
+
+                labels: categoryLabels,
+
+                datasets: [
+
+                    {
+                        label: "Wallpapers",
+                        data: categoryValues,
+                        borderRadius: 7,
+                        borderWidth: 0
+                    }
+
+                ]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                plugins: {
+
+                    legend: {
+                        display: false
+                    }
+
+                },
+
+                scales: {
+
+                    y: {
+                        beginAtZero: true
+                    }
+
+                }
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       ORDER STATUS
+    ========================================================= */
+
+    const orderStatusLabels =
+        {{ order_status_labels|safe }};
+
+    const orderStatusValues =
+        {{ order_status_values|safe }};
+
+
+    new Chart(
+        document.getElementById("orderChart"),
+        {
+            type: "doughnut",
+
+            data: {
+
+                labels: orderStatusLabels,
+
+                datasets: [
+
+                    {
+                        data: orderStatusValues,
+                        borderWidth: 2
+                    }
+
+                ]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                cutout: "60%",
+
+                plugins: {
+
+                    legend: {
+                        position: "bottom"
+                    }
+
+                }
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       FINANCE CHART
+    ========================================================= */
+
+    const financeLabels =
+        {{ profit_labels|safe }};
+
+    const revenueValues =
+        {{ revenue_values|safe }};
+
+    const expenseValues =
+        {{ expense_values|safe }};
+
+    const profitValues =
+        {{ profit_values|safe }};
+
+
+    new Chart(
+        document.getElementById("financeChart"),
+        {
+            type: "line",
+
+            data: {
+
+                labels: financeLabels,
+
+                datasets: [
+
+                    {
+                        label: "Revenue",
+                        data: revenueValues,
+                        tension: 0.4,
+                        borderWidth: 2
+                    },
+
+                    {
+                        label: "Expense",
+                        data: expenseValues,
+                        tension: 0.4,
+                        borderWidth: 2
+                    },
+
+                    {
+                        label: "Profit / Loss",
+                        data: profitValues,
+                        tension: 0.4,
+                        borderWidth: 2
+                    }
+
+                ]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                interaction: {
+                    mode: "index",
+                    intersect: false
+                },
+
+                scales: {
+
+                    y: {
+                        beginAtZero: true
+                    }
+
+                }
+
+            }
+
+        }
+    );
+
+</script>
+
+
+<!-- =========================================================
+     PLOTLY WORLD MAP
+========================================================= -->
+
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+
+<script>
+
+    /* =========================================================
+       COUNTRY NAME → ISO-3
+    ========================================================= */
+
+    const countryISO = {
+
+        "India": "IND",
+
+        "United States": "USA",
+        "USA": "USA",
+        "United States of America": "USA",
+
+        "United Kingdom": "GBR",
+        "UK": "GBR",
+
+        "China": "CHN",
+
+        "Japan": "JPN",
+
+        "Germany": "DEU",
+
+        "France": "FRA",
+
+        "Italy": "ITA",
+
+        "Canada": "CAN",
+
+        "Australia": "AUS",
+
+        "Brazil": "BRA",
+
+        "Russia": "RUS",
+
+        "Singapore": "SGP",
+
+        "UAE": "ARE",
+        "United Arab Emirates": "ARE",
+
+        "Spain": "ESP",
+
+        "Mexico": "MEX",
+
+        "South Korea": "KOR",
+
+        "South Korea": "KOR",
+
+        "Netherlands": "NLD",
+
+        "Switzerland": "CHE",
+
+        "Sweden": "SWE",
+
+        "Norway": "NOR",
+
+        "New Zealand": "NZL",
+
+        "South Africa": "ZAF",
+
+        "Turkey": "TUR",
+
+        "Saudi Arabia": "SAU",
+
+        "Pakistan": "PAK",
+
+        "Bangladesh": "BGD",
+
+        "Nepal": "NPL",
+
+        "Sri Lanka": "LKA",
+
+        "Indonesia": "IDN",
+
+        "Malaysia": "MYS",
+
+        "Thailand": "THA",
+
+        "Vietnam": "VNM",
+
+        "Philippines": "PHL",
+
+        "Egypt": "EGY",
+
+        "Nigeria": "NGA",
+
+        "Kenya": "KEN",
+
+        "Argentina": "ARG",
+
+        "Chile": "CHL",
+
+        "Colombia": "COL"
+
+    };
+
+
+    /* =========================================================
+       CREATE PRODUCTS MAP
+    ========================================================= */
+
+    function createProductsMap() {
+
+        const mapCountries =
+            {{ wallpaper_country_labels|safe }};
+
+        const mapValues =
+            {{ wallpaper_country_values|safe }};
+
+
+        const locations = [];
+
+        const values = [];
+
+        const displayNames = [];
+
+
+        for (
+            let i = 0;
+            i < mapCountries.length;
+            i++
+        ) {
+
+            const countryName =
+                mapCountries[i];
+
+            const iso =
+                countryISO[countryName];
+
+
+            if (iso) {
+
+                locations.push(iso);
+
+                values.push(
+                    Number(mapValues[i])
+                );
+
+                displayNames.push(
+                    countryName
+                );
+
+            }
+
+        }
+
+
+        Plotly.newPlot(
+
+            "productsWorldMap",
+
+            [
+                {
+
+                    type: "choropleth",
+
+                    locations: locations,
+
+                    z: values,
+
+                    text: displayNames,
+
+                    locationmode: "ISO-3",
+
+                    hovertemplate:
+                        "<b>%{text}</b>" +
+                        "<br>Wallpapers: %{z}" +
+                        "<extra>Click to view</extra>",
+
+                    colorbar: {
+
+                        title: "Wallpapers",
+
+                        thickness: 12
+
+                    },
+
+                    marker: {
+
+                        line: {
+
+                            color: "#ffffff",
+
+                            width: 0.7
+
+                        }
+
+                    }
+
+                }
+
+            ],
+
+            {
+
+                geo: {
+
+                    projection: {
+                        type: "natural earth"
+                    },
+
+                    showframe: false,
+
+                    showcoastlines: true,
+
+                    coastlinecolor: "#bca99a",
+
+                    showcountries: true,
+
+                    countrycolor: "#ffffff",
+
+                    showland: true,
+
+                    landcolor: "#eee5dd",
+
+                    bgcolor: "rgba(0,0,0,0)"
+
+                },
+
+                margin: {
+                    l: 0,
+                    r: 0,
+                    t: 0,
+                    b: 0
+                },
+
+                paper_bgcolor:
+                    "rgba(0,0,0,0)"
+
+            },
+
+            {
+
+                responsive: true,
+
+                displayModeBar: false,
+
+                scrollZoom: false
+
+            }
+
+        );
+
+
+        /* =====================================================
+           CLICK COUNTRY
+        ===================================================== */
+
+        document
+            .getElementById("productsWorldMap")
+            .on(
+                "plotly_click",
+                function(eventData) {
+
+                    if (
+                        !eventData ||
+                        !eventData.points ||
+                        !eventData.points.length
+                    ) {
+                        return;
+                    }
+
+
+                    const point =
+                        eventData.points[0];
+
+
+                    const country =
+                        point.text ||
+                        point.location;
+
+
+                    const count =
+                        point.z;
+
+
+                    alert(
+                        country +
+                        "\n\nWallpaper Count: " +
+                        count
+                    );
+
+                }
+            );
+
+    }
+
+
+    /* =========================================================
+       CREATE USERS MAP
+    ========================================================= */
+
+    function createUsersMap() {
+
+        const mapCountries =
+            {{ user_country_labels|safe }};
+
+        const mapValues =
+            {{ user_country_values|safe }};
+
+
+        const locations = [];
+
+        const values = [];
+
+        const displayNames = [];
+
+
+        for (
+            let i = 0;
+            i < mapCountries.length;
+            i++
+        ) {
+
+            const countryName =
+                mapCountries[i];
+
+            const iso =
+                countryISO[countryName];
+
+
+            if (iso) {
+
+                locations.push(iso);
+
+                values.push(
+                    Number(mapValues[i])
+                );
+
+                displayNames.push(
+                    countryName
+                );
+
+            }
+
+        }
+
+
+        Plotly.newPlot(
+
+            "usersWorldMap",
+
+            [
+                {
+
+                    type: "choropleth",
+
+                    locations: locations,
+
+                    z: values,
+
+                    text: displayNames,
+
+                    locationmode: "ISO-3",
+
+                    hovertemplate:
+                        "<b>%{text}</b>" +
+                        "<br>Users: %{z}" +
+                        "<extra>Click to view</extra>",
+
+                    colorbar: {
+
+                        title: "Users",
+
+                        thickness: 12
+
+                    },
+
+                    marker: {
+
+                        line: {
+
+                            color: "#ffffff",
+
+                            width: 0.7
+
+                        }
+
+                    }
+
+                }
+
+            ],
+
+            {
+
+                geo: {
+
+                    projection: {
+                        type: "natural earth"
+                    },
+
+                    showframe: false,
+
+                    showcoastlines: true,
+
+                    coastlinecolor: "#bca99a",
+
+                    showcountries: true,
+
+                    countrycolor: "#ffffff",
+
+                    showland: true,
+
+                    landcolor: "#eee5dd",
+
+                    bgcolor: "rgba(0,0,0,0)"
+
+                },
+
+                margin: {
+                    l: 0,
+                    r: 0,
+                    t: 0,
+                    b: 0
+                },
+
+                paper_bgcolor:
+                    "rgba(0,0,0,0)"
+
+            },
+
+            {
+
+                responsive: true,
+
+                displayModeBar: false,
+
+                scrollZoom: false
+
+            }
+
+        );
+
+
+        /* =====================================================
+           CLICK COUNTRY
+        ===================================================== */
+
+        document
+            .getElementById("usersWorldMap")
+            .on(
+                "plotly_click",
+                function(eventData) {
+
+                    if (
+                        !eventData ||
+                        !eventData.points ||
+                        !eventData.points.length
+                    ) {
+                        return;
+                    }
+
+
+                    const point =
+                        eventData.points[0];
+
+
+                    const country =
+                        point.text ||
+                        point.location;
+
+
+                    const count =
+                        point.z;
+
+
+                    alert(
+                        country +
+                        "\n\nUser Count: " +
+                        count
+                    );
+
+                }
+            );
+
+    }
+
+
+    /* =========================================================
+       INITIALIZE BOTH MAPS
+    ========================================================= */
+
+    createProductsMap();
+
+    createUsersMap();
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,567 @@
+```html
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+
+<div class="flex items-center justify-between mb-6">
+
+    <div>
+        <h1 class="text-2xl font-bold text-[#4a3f35]">
+            Super Admin Control Panel
+        </h1>
+
+        <p class="text-xs text-[#8c7355] mt-1">
+            Global User Tracking, AI Analytics & System Logs
+        </p>
+    </div>
+
+    <span class="text-xs font-semibold px-3 py-1.5 bg-[#f4efe6] text-[#6e5f51] border border-[#e8e2d5] rounded-md">
+        <i class="fa-solid fa-globe mr-1"></i>
+        Multi-Country Analytics
+    </span>
+
+</div>
+
+
+<!-- =========================
+     STATISTICS
+========================= -->
+
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+
+    <div class="p-6 rounded-xl bg-white border border-[#e8e2d5] shadow-sm">
+
+        <div class="flex justify-between items-start">
+
+            <div>
+
+                <p class="text-xs font-bold text-[#8c7355] uppercase tracking-wider">
+                    Total Users
+                </p>
+
+                <h2 class="text-3xl font-extrabold text-[#4a3f35] mt-2">
+                    {{ total_users }}
+                </h2>
+
+            </div>
+
+            <span class="p-3 bg-[#fbf9f5] text-[#8c7355] rounded-lg">
+                <i class="fa-solid fa-users text-xl"></i>
+            </span>
+
+        </div>
+
+        <p class="text-xs text-[#a39585] mt-3">
+            Registered users
+        </p>
+
+    </div>
+
+
+    <div class="p-6 rounded-xl bg-white border border-[#e8e2d5] shadow-sm">
+
+        <div class="flex justify-between items-start">
+
+            <div>
+
+                <p class="text-xs font-bold text-[#8c7355] uppercase tracking-wider">
+                    Total Wallpapers
+                </p>
+
+                <h2 class="text-3xl font-extrabold text-[#4a3f35] mt-2">
+                    {{ total_wallpapers }}
+                </h2>
+
+            </div>
+
+            <span class="p-3 bg-[#fbf9f5] text-[#8c7355] rounded-lg">
+                <i class="fa-solid fa-image text-xl"></i>
+            </span>
+
+        </div>
+
+        <p class="text-xs text-[#a39585] mt-3">
+            Uploaded wallpapers
+        </p>
+
+    </div>
+
+
+    <div class="p-6 rounded-xl bg-white border border-[#e8e2d5] shadow-sm">
+
+        <div class="flex justify-between items-start">
+
+            <div>
+
+                <p class="text-xs font-bold text-[#8c7355] uppercase tracking-wider">
+                    Total Downloads
+                </p>
+
+                <h2 class="text-3xl font-extrabold text-[#4a3f35] mt-2">
+                    {{ total_downloads }}
+                </h2>
+
+            </div>
+
+            <span class="p-3 bg-[#fbf9f5] text-[#8c7355] rounded-lg">
+                <i class="fa-solid fa-download text-xl"></i>
+            </span>
+
+        </div>
+
+        <p class="text-xs text-[#a39585] mt-3">
+            Wallpaper downloads
+        </p>
+
+    </div>
+
+
+    <div class="p-6 rounded-xl bg-white border border-[#e8e2d5] shadow-sm">
+
+        <div class="flex justify-between items-start">
+
+            <div>
+
+                <p class="text-xs font-bold text-[#8c7355] uppercase tracking-wider">
+                    Categories
+                </p>
+
+                <h2 class="text-3xl font-extrabold text-[#4a3f35] mt-2">
+                    {{ total_categories }}
+                </h2>
+
+            </div>
+
+            <span class="p-3 bg-[#fbf9f5] text-[#8c7355] rounded-lg">
+                <i class="fa-solid fa-layer-group text-xl"></i>
+            </span>
+
+        </div>
+
+        <p class="text-xs text-[#a39585] mt-3">
+            Wallpaper categories
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     CHARTS
+========================= -->
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+
+
+    <!-- COUNTRY GRAPH -->
+
+    <div class="lg:col-span-2 bg-white p-6 rounded-xl border border-[#e8e2d5] shadow-sm">
+
+        <div class="flex items-center justify-between mb-4">
+
+            <div>
+
+                <h3 class="text-base font-bold text-[#4a3f35]">
+                    Country & Region Analytics
+                </h3>
+
+                <p class="text-xs text-[#a39585] mt-1">
+                    Wallpaper downloads by country
+                </p>
+
+            </div>
+
+            <span class="text-xs px-2 py-1 rounded-md bg-[#f4efe6] text-[#8c7355]">
+                Live Data
+            </span>
+
+        </div>
+
+        <div class="h-72">
+
+            <canvas id="countryTrafficChart"></canvas>
+
+        </div>
+
+    </div>
+
+
+    <!-- CATEGORY GRAPH -->
+
+    <div class="bg-white p-6 rounded-xl border border-[#e8e2d5] shadow-sm">
+
+        <h3 class="text-base font-bold text-[#4a3f35]">
+            Wallpaper Categories
+        </h3>
+
+        <p class="text-xs text-[#a39585] mt-1 mb-4">
+            Wallpapers by category
+        </p>
+
+        <div class="h-64 relative">
+
+            <canvas id="categoryChart"></canvas>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     RECENT ACTIVITIES
+========================= -->
+
+<div class="bg-white p-6 rounded-xl border border-[#e8e2d5] shadow-sm mb-8">
+
+    <div class="flex justify-between items-center mb-4">
+
+        <h3 class="text-base font-bold text-[#4a3f35]">
+            Recent User Activities
+        </h3>
+
+        <a
+            href="{% url 'user_activities' %}"
+            class="text-xs font-semibold text-[#8c7355] hover:underline"
+        >
+            View All
+        </a>
+
+    </div>
+
+
+    <div class="overflow-x-auto">
+
+        <table class="w-full text-left border-collapse">
+
+            <thead>
+
+                <tr class="border-b border-[#f4efe6] bg-[#fbf9f5] text-xs font-bold text-[#8c7355] uppercase">
+
+                    <th class="p-3">
+                        Username
+                    </th>
+
+                    <th class="p-3">
+                        Action
+                    </th>
+
+                    <th class="p-3">
+                        Timestamp
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody class="divide-y divide-[#f4efe6] text-sm">
+
+                {% for activity in recent_activities %}
+
+                <tr class="hover:bg-[#fcfbfa]">
+
+                    <td class="p-3 font-semibold text-[#4a3f35]">
+                        {{ activity.username }}
+                    </td>
+
+                    <td class="p-3 text-[#6e5f51]">
+                        {{ activity.action }}
+                    </td>
+
+                    <td class="p-3 text-[#a39585] text-xs">
+                        {{ activity.timestamp|date:"d M, Y H:i" }}
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td
+                        colspan="3"
+                        class="p-4 text-center text-[#a39585]"
+                    >
+                        No user activities found.
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     CHART JAVASCRIPT
+========================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* =========================
+       COUNTRY CHART
+    ========================= */
+
+    const countryCanvas =
+        document.getElementById("countryTrafficChart");
+
+    if (countryCanvas) {
+
+        const countryLabels = [
+
+            {% for item in country_chart_data %}
+
+                "{{ item.name|escapejs }}"
+
+                {% if not forloop.last %},{% endif %}
+
+            {% endfor %}
+
+        ];
+
+
+        const countryDownloads = [
+
+            {% for item in country_chart_data %}
+
+                {{ item.downloads }}
+
+                {% if not forloop.last %},{% endif %}
+
+            {% endfor %}
+
+        ];
+
+
+        new Chart(
+            countryCanvas.getContext("2d"),
+            {
+
+                type: "bar",
+
+                data: {
+
+                    labels: countryLabels,
+
+                    datasets: [
+
+                        {
+
+                            label: "Wallpaper Downloads",
+
+                            data: countryDownloads,
+
+                            backgroundColor: "#8c7355",
+
+                            borderRadius: 5,
+
+                            barPercentage: 0.45,
+
+                            categoryPercentage: 0.7
+
+                        }
+
+                    ]
+
+                },
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: false,
+
+                    plugins: {
+
+                        legend: {
+
+                            display: false
+
+                        },
+
+                        tooltip: {
+
+                            enabled: true
+
+                        }
+
+                    },
+
+                    scales: {
+
+                        x: {
+
+                            grid: {
+
+                                display: false
+
+                            },
+
+                            ticks: {
+
+                                color: "#6e5f51"
+
+                            }
+
+                        },
+
+                        y: {
+
+                            beginAtZero: true,
+
+                            ticks: {
+
+                                precision: 0,
+
+                                color: "#6e5f51"
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =========================
+       CATEGORY CHART
+    ========================= */
+
+    const categoryCanvas =
+        document.getElementById("categoryChart");
+
+
+    if (categoryCanvas) {
+
+        const categoryLabels = [
+
+            {% for category in category_chart_data %}
+
+                "{{ category.name|escapejs }}"
+
+                {% if not forloop.last %},{% endif %}
+
+            {% endfor %}
+
+        ];
+
+
+        const categoryCounts = [
+
+            {% for category in category_chart_data %}
+
+                {{ category.count }}
+
+                {% if not forloop.last %},{% endif %}
+
+            {% endfor %}
+
+        ];
+
+
+        new Chart(
+            categoryCanvas.getContext("2d"),
+            {
+
+                type: "doughnut",
+
+                data: {
+
+                    labels: categoryLabels,
+
+                    datasets: [
+
+                        {
+
+                            data: categoryCounts,
+
+                            backgroundColor: [
+
+                                "#8c7355",
+                                "#c2b299",
+                                "#b5a48c",
+                                "#e8e2d5",
+                                "#6e5f51",
+                                "#a39585",
+                                "#d6cbb8",
+                                "#9b876c",
+                                "#bda98c",
+                                "#75624e"
+
+                            ],
+
+                            borderWidth: 2,
+
+                            borderColor: "#ffffff"
+
+                        }
+
+                    ]
+
+                },
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: false,
+
+                    cutout: "65%",
+
+                    plugins: {
+
+                        legend: {
+
+                            display: true,
+
+                            position: "bottom",
+
+                            labels: {
+
+                                padding: 12,
+
+                                boxWidth: 12
+
+                            }
+
+                        },
+
+                        tooltip: {
+
+                            enabled: true
+
+                        }
+
+                    }
+
+                }
+
+            }
+        );
+
+    }
+
+});
+
+</script>
+
+{% endblock %}
+```

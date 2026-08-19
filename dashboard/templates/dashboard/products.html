@@ -1,0 +1,33 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="flex items-center justify-between mb-6">
+    <h1 class="text-2xl font-bold text-[#4a3f35]">Wallpapers & Products</h1>
+    <a href="{% url 'dashboard' %}" class="text-xs font-semibold px-3 py-1.5 bg-[#f4efe6] text-[#6e5f51] border border-[#e8e2d5] rounded-md">Back to Dashboard</a>
+</div>
+<div class="bg-white p-6 rounded-xl border border-[#e8e2d5] shadow-sm">
+    <table class="w-full text-left border-collapse">
+        <thead>
+            <tr class="border-b bg-[#fbf9f5] text-xs font-bold text-[#8c7355] uppercase">
+                <th class="p-3">ID</th>
+                <th class="p-3">Title</th>
+                <th class="p-3">Category</th>
+                <th class="p-3">Price</th>
+                <th class="p-3">Stock</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-[#f4efe6] text-sm">
+            {% for p in products %}
+            <tr>
+                <td class="p-3 text-[#6e5f51]">#{{ p.id }}</td>
+                <td class="p-3 font-semibold text-[#4a3f35]">{{ p.title }}</td>
+                <td class="p-3 text-[#6e5f51]">{{ p.category.name }}</td>
+                <td class="p-3 font-bold text-[#4a3f35]">₹{{ p.price }}</td>
+                <td class="p-3 text-[#6e5f51]">{{ p.stock }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="5" class="p-4 text-center text-[#a39585]">No products found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

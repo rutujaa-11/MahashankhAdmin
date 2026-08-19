@@ -1,0 +1,308 @@
+# Edit Wallpaper Template
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Wallpaper</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .form-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0 0 25px 0;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        input[type="file"] {
+            padding: 8px;
+        }
+
+        .current-image {
+            margin-top: 10px;
+            margin-bottom: 15px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+
+        .current-image img {
+            display: block;
+            width: 200px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        .image-name {
+            margin: 8px 0 0 0;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .no-image {
+            color: #777;
+            margin: 0;
+        }
+
+        .buttons {
+            margin-top: 25px;
+            display: flex;
+            gap: 10px;
+        }
+
+        button,
+        .back-btn {
+            padding: 11px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .back-btn {
+            background: #555;
+            color: white;
+        }
+
+        .back-btn:hover {
+            background: #333;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="form-box">
+
+        <h1>Edit Wallpaper</h1>
+
+        <form
+            method="POST"
+            enctype="multipart/form-data"
+        >
+
+            {% csrf_token %}
+
+
+            <!-- Wallpaper Title -->
+
+            <label for="title">
+                Wallpaper Title
+            </label>
+
+            <input
+                type="text"
+                id="title"
+                name="title"
+                value="{{ wallpaper.title }}"
+                required
+            >
+
+
+            <!-- Category -->
+
+            <label for="category">
+                Category
+            </label>
+
+            <select
+                id="category"
+                name="category"
+                required
+            >
+
+                <option
+                    value="Mural"
+                    {% if wallpaper.category == "Mural" %}
+                        selected
+                    {% endif %}
+                >
+                    Mural
+                </option>
+
+                <option
+                    value="Painting"
+                    {% if wallpaper.category == "Painting" %}
+                        selected
+                    {% endif %}
+                >
+                    Painting
+                </option>
+
+                <option
+                    value="General"
+                    {% if wallpaper.category == "General" %}
+                        selected
+                    {% endif %}
+                >
+                    General
+                </option>
+
+            </select>
+
+
+            <!-- Current Image -->
+
+            <label>
+                Current Image
+            </label>
+
+            <div class="current-image">
+
+                {% if wallpaper.image %}
+
+                    <img
+                        src="{{ wallpaper.image.url }}"
+                        alt="{{ wallpaper.title }}"
+                    >
+
+                    <p class="image-name">
+                        {{ wallpaper.image.name }}
+                    </p>
+
+                {% else %}
+
+                    <p class="no-image">
+                        No image uploaded.
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- Change Image -->
+
+            <label for="image">
+                Change Image
+            </label>
+
+            <input
+                type="file"
+                id="image"
+                name="image"
+                accept="image/*"
+            >
+
+
+            <!-- Description -->
+
+            <label for="description">
+                Description
+            </label>
+
+            <textarea
+                id="description"
+                name="description"
+            >{{ wallpaper.description }}</textarea>
+
+
+            <!-- Price -->
+
+            <label for="price">
+                Price
+            </label>
+
+            <input
+                type="number"
+                id="price"
+                name="price"
+                min="0"
+                step="0.01"
+                value="{{ wallpaper.price }}"
+            >
+
+
+            <!-- Buttons -->
+
+            <div class="buttons">
+
+                <button type="submit">
+                    Update Wallpaper
+                </button>
+
+                <a
+                    href="{% url 'wallpapers' %}"
+                    class="back-btn"
+                >
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
+```

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahashankh Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-[#faf8f5] font-sans text-gray-800 antialiased">
+
+    <!-- Top Cream/White Navbar -->
+    <header class="bg-white h-16 fixed top-0 left-0 right-0 z-30 flex items-center justify-between px-6 border-b border-[#e8e2d5] shadow-sm">
+        <div class="flex items-center space-x-6">
+            <div class="flex items-center space-x-2 w-56">
+                <i class="fa-solid fa-crown text-[#8c7355] text-2xl"></i>
+                <span class="text-xl font-bold text-[#4a3f35] tracking-wide">Mahashankh</span>
+            </div>
+            <button class="text-[#8c7355] hover:text-[#4a3f35] focus:outline-none">
+                <i class="fa-solid fa-bars text-lg"></i>
+            </button>
+            <div class="relative hidden md:block">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-[#a39585] text-sm"></i>
+                <input type="text" placeholder="Search countries, users, logs..." class="pl-9 pr-4 py-1.5 text-sm bg-[#fcfbfa] border border-[#e8e2d5] rounded-md focus:ring-2 focus:ring-[#8c7355] focus:outline-none w-72">
+            </div>
+        </div>
+        
+        <div class="flex items-center space-x-5 text-[#6e5f51]">
+            <div class="flex items-center space-x-3 cursor-pointer">
+                <img src="https://ui-avatars.com/api/?name={{ request.user.username }}&background=f4efe6&color=4a3f35" class="w-8 h-8 rounded-full border border-[#d6cbb8]">
+                <span class="text-sm font-semibold text-[#4a3f35] hidden sm:inline">{{ request.user.username }}</span>
+                <i class="fa-solid fa-chevron-down text-xs text-[#a39585]"></i>
+            </div>
+            <i class="fa-solid fa-bell hover:text-[#4a3f35] cursor-pointer text-sm"></i>
+            <a href="/admin/logout/" title="Logout"><i class="fa-solid fa-power-off text-red-500 hover:text-red-700 cursor-pointer text-sm"></i></a>
+        </div>
+    </header>
+
+    <div class="flex pt-16 min-h-screen">
+        <!-- Sidebar Navigation -->
+        <aside class="w-64 bg-white min-h-screen border-r border-[#e8e2d5] hidden md:block flex-shrink-0">
+            <div class="p-6 flex items-center space-x-4 border-b border-[#f4efe6]">
+                <img src="https://ui-avatars.com/api/?name={{ request.user.username }}&background=f4efe6&color=4a3f35" class="w-11 h-11 rounded-full border-2 border-[#d6cbb8]">
+                <div>
+                    <h4 class="font-bold text-sm text-[#4a3f35]">{{ request.user.username }}</h4>
+                    <p class="text-xs text-[#8c7355] font-medium">Super Admin</p>
+                </div>
+            </div>
+
+            <!-- Dynamic Menu Links -->
+            <nav class="p-4 space-y-1 text-sm font-medium text-[#6e5f51]">
+              <a href="{% url 'dashboard' %}" class="flex items-center justify-between px-4 py-3 text-[#4a3f35] bg-[#f7f4ef] border-l-4 border-[#8c7355] rounded-r-lg font-bold">
+    <span>Dashboard Overview</span>
+    <i class="fa-solid fa-chart-pie text-[#8c7355]"></i>
+</a>
+<a href="{% url 'user_activities' %}" class="flex items-center justify-between px-4 py-3 hover:text-[#4a3f35] hover:bg-[#fbf9f5] rounded-lg">
+    <span>User Activities & Location</span>
+    <i class="fa-solid fa-earth-americas text-[#a39585]"></i>
+</a>
+<a href="{% url 'ai_generations' %}" class="flex items-center justify-between px-4 py-3 hover:text-[#4a3f35] hover:bg-[#fbf9f5] rounded-lg">
+    <span>AI Image Generation Logs</span>
+    <i class="fa-solid fa-wand-magic-sparkles text-[#a39585]"></i>
+</a>
+<a href="{% url 'chatbot_logs' %}" class="flex items-center justify-between px-4 py-3 hover:text-[#4a3f35] hover:bg-[#fbf9f5] rounded-lg">
+    <span>Chatbot Search Questions</span>
+    <i class="fa-solid fa-comments text-[#a39585]"></i>
+</a>
+<a href="{% url 'product_list' %}" class="flex items-center justify-between px-4 py-3 hover:text-[#4a3f35] hover:bg-[#fbf9f5] rounded-lg">
+    <span>Wallpapers & Products</span>
+    <i class="fa-solid fa-box-open text-[#a39585]"></i>
+</a>
+<a href="{% url 'order_list' %}" class="flex items-center justify-between px-4 py-3 hover:text-[#4a3f35] hover:bg-[#fbf9f5] rounded-lg">
+    <span>Orders & Transactions</span>
+    <i class="fa-solid fa-credit-card text-[#a39585]"></i>
+</a>
+<a href="{% url 'user_list' %}" class="flex items-center justify-between px-4 py-3 hover:text-[#4a3f35] hover:bg-[#fbf9f5] rounded-lg">
+    <span>Users & Permissions</span>
+    <i class="fa-solid fa-user-shield text-[#a39585]"></i>
+</a>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content View -->
+        <main class="flex-1 p-8 overflow-y-auto">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="flex items-center justify-between mb-6">
+    <div>
+        <h1 class="text-2xl font-bold text-[#4a3f35]">AI Image Generation Logs</h1>
+        <p class="text-xs text-[#8c7355] mt-1">User AI Prompts & Mural Category Generation History</p>
+    </div>
+    <a href="{% url 'dashboard' %}" class="text-xs font-semibold px-3 py-1.5 bg-[#f4efe6] text-[#6e5f51] border border-[#e8e2d5] rounded-md hover:bg-[#e8e2d5]">
+        <i class="fa-solid fa-arrow-left mr-1"></i> Back to Dashboard
+    </a>
+</div>
+
+<div class="bg-white p-6 rounded-xl border border-[#e8e2d5] shadow-sm">
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="border-b border-[#f4efe6] bg-[#fbf9f5] text-xs font-bold text-[#8c7355] uppercase">
+                    <th class="p-3">User</th>
+                    <th class="p-3">Prompt Used</th>
+                    <th class="p-3">Category</th>
+                    <th class="p-3">Generated Date</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-[#f4efe6] text-sm">
+                {% for ai in ai_logs %}
+                <tr class="hover:bg-[#fcfbfa]">
+                    <td class="p-3 font-semibold text-[#4a3f35]">{{ ai.user.username }}</td>
+                    <td class="p-3 text-[#6e5f51] text-xs font-mono">{{ ai.prompt_used }}</td>
+                    <td class="p-3 text-[#8c7355] text-xs font-semibold">{{ ai.category_type|default:"Custom AI" }}</td>
+                    <td class="p-3 text-[#a39585] text-xs">{{ ai.created_at|date:"d M Y, H:i A" }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="4" class="p-4 text-center text-[#a39585]">No AI Image generations recorded yet.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
