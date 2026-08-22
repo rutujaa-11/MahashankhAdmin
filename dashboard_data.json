@@ -1,0 +1,2057 @@
+[
+{
+  "model": "dashboard.country",
+  "pk": 1,
+  "fields": {
+    "country": "India",
+    "continent": "Asia",
+    "ranking": 1,
+    "country_type": "Producer, Consumer",
+    "products": 0
+  }
+},
+{
+  "model": "dashboard.country",
+  "pk": 2,
+  "fields": {
+    "country": "USA",
+    "continent": "North America",
+    "ranking": 3,
+    "country_type": "Consumer",
+    "products": 0
+  }
+},
+{
+  "model": "dashboard.country",
+  "pk": 3,
+  "fields": {
+    "country": "Japan",
+    "continent": "Asia",
+    "ranking": 3,
+    "country_type": "Consumer",
+    "products": 0
+  }
+},
+{
+  "model": "dashboard.country",
+  "pk": 4,
+  "fields": {
+    "country": "Germany",
+    "continent": "Europe",
+    "ranking": 4,
+    "country_type": "Producer, Consumer",
+    "products": 0
+  }
+},
+{
+  "model": "dashboard.state",
+  "pk": 1,
+  "fields": {
+    "name": "Maharashtra",
+    "country": 1,
+    "slug": "maharashtra"
+  }
+},
+{
+  "model": "dashboard.state",
+  "pk": 2,
+  "fields": {
+    "name": "New York",
+    "country": 2,
+    "slug": "new-york"
+  }
+},
+{
+  "model": "dashboard.state",
+  "pk": 3,
+  "fields": {
+    "name": "Tokyo",
+    "country": 4,
+    "slug": "tokyo"
+  }
+},
+{
+  "model": "dashboard.state",
+  "pk": 4,
+  "fields": {
+    "name": "Bavaria",
+    "country": 3,
+    "slug": "bavaria"
+  }
+},
+{
+  "model": "dashboard.city",
+  "pk": 1,
+  "fields": {
+    "name": "Mumbai",
+    "state": 1,
+    "country": 1,
+    "coordinates": "19.0760,72.8777",
+    "areas": 10,
+    "tile_hub": true
+  }
+},
+{
+  "model": "dashboard.city",
+  "pk": 2,
+  "fields": {
+    "name": "Pune",
+    "state": 1,
+    "country": 1,
+    "coordinates": "18.5204,73.8567",
+    "areas": 8,
+    "tile_hub": true
+  }
+},
+{
+  "model": "dashboard.city",
+  "pk": 3,
+  "fields": {
+    "name": "New York City",
+    "state": 2,
+    "country": 2,
+    "coordinates": "40.7128,-74.0060",
+    "areas": 12,
+    "tile_hub": true
+  }
+},
+{
+  "model": "dashboard.city",
+  "pk": 4,
+  "fields": {
+    "name": "Tokyo",
+    "state": 3,
+    "country": 3,
+    "coordinates": "35.6762,139.6503",
+    "areas": 15,
+    "tile_hub": true
+  }
+},
+{
+  "model": "dashboard.areavillage",
+  "pk": 1,
+  "fields": {
+    "name": "Andheri",
+    "city": 1,
+    "state": 1,
+    "country": 1,
+    "area_type": "Area",
+    "pincode": "400053",
+    "showrooms": 3
+  }
+},
+{
+  "model": "dashboard.areavillage",
+  "pk": 2,
+  "fields": {
+    "name": "Baner",
+    "city": 2,
+    "state": 1,
+    "country": 1,
+    "area_type": "Area",
+    "pincode": "411045",
+    "showrooms": 4
+  }
+},
+{
+  "model": "dashboard.areavillage",
+  "pk": 3,
+  "fields": {
+    "name": "Manhattan",
+    "city": 3,
+    "state": 2,
+    "country": 2,
+    "area_type": "Area",
+    "pincode": "10001",
+    "showrooms": 3
+  }
+},
+{
+  "model": "dashboard.areavillage",
+  "pk": 4,
+  "fields": {
+    "name": "Shibuya",
+    "city": 4,
+    "state": 3,
+    "country": 3,
+    "area_type": "Area",
+    "pincode": "1500002",
+    "showrooms": 2
+  }
+},
+{
+  "model": "dashboard.category",
+  "pk": 4,
+  "fields": {
+    "name": "Abstract"
+  }
+},
+{
+  "model": "dashboard.category",
+  "pk": 5,
+  "fields": {
+    "name": "Wall Murals"
+  }
+},
+{
+  "model": "dashboard.category",
+  "pk": 6,
+  "fields": {
+    "name": "Wallpaper Rolls"
+  }
+},
+{
+  "model": "dashboard.category",
+  "pk": 7,
+  "fields": {
+    "name": "Paintings / Wallart"
+  }
+},
+{
+  "model": "dashboard.category",
+  "pk": 8,
+  "fields": {
+    "name": "Glass Mosaic Tiles"
+  }
+},
+{
+  "model": "dashboard.category",
+  "pk": 9,
+  "fields": {
+    "name": "Home Decor"
+  }
+},
+{
+  "model": "dashboard.category",
+  "pk": 10,
+  "fields": {
+    "name": "Self Adhesive Wallpaper"
+  }
+},
+{
+  "model": "dashboard.wallpaper",
+  "pk": 1,
+  "fields": {
+    "title": "Forest",
+    "category": 10,
+    "downloads": 0,
+    "country": "India",
+    "image": "wallpapers/w1.jpg",
+    "uploaded_at": "2026-08-15T15:39:57.823Z"
+  }
+},
+{
+  "model": "dashboard.wallpaper",
+  "pk": 2,
+  "fields": {
+    "title": "BMW Car",
+    "category": 10,
+    "downloads": 0,
+    "country": "India",
+    "image": "wallpapers/bmw.jpg",
+    "uploaded_at": "2026-08-15T15:42:02.445Z"
+  }
+},
+{
+  "model": "dashboard.wallpaper",
+  "pk": 3,
+  "fields": {
+    "title": "rose",
+    "category": 7,
+    "downloads": 0,
+    "country": "UK",
+    "image": "wallpapers/45_4DxyIUq.jpg",
+    "uploaded_at": "2026-08-15T15:43:54.195Z"
+  }
+},
+{
+  "model": "dashboard.wallpaper",
+  "pk": 4,
+  "fields": {
+    "title": "Abstract Art",
+    "category": 4,
+    "downloads": 0,
+    "country": "Japan",
+    "image": "wallpapers/w3.jpg",
+    "uploaded_at": "2026-08-15T15:45:38.864Z"
+  }
+},
+{
+  "model": "dashboard.wallpaper",
+  "pk": 5,
+  "fields": {
+    "title": "Rose Text",
+    "category": 5,
+    "downloads": 0,
+    "country": "UK",
+    "image": "wallpapers/rose.jpg",
+    "uploaded_at": "2026-08-15T18:13:12.747Z"
+  }
+},
+{
+  "model": "dashboard.wallpaper",
+  "pk": 6,
+  "fields": {
+    "title": "Luxury Home",
+    "category": 9,
+    "downloads": 1,
+    "country": "Brazil",
+    "image": "wallpapers/home.jpg",
+    "uploaded_at": "2026-08-16T12:09:40.906Z"
+  }
+},
+{
+  "model": "dashboard.wallpaper",
+  "pk": 7,
+  "fields": {
+    "title": "wallpaper roll",
+    "category": 6,
+    "downloads": 2,
+    "country": "china",
+    "image": "wallpapers/2.jpg",
+    "uploaded_at": "2026-08-16T14:21:00.876Z"
+  }
+},
+{
+  "model": "dashboard.wallpaper",
+  "pk": 8,
+  "fields": {
+    "title": "tiles",
+    "category": 8,
+    "downloads": 3,
+    "country": "america",
+    "image": "wallpapers/4.jpg",
+    "uploaded_at": "2026-08-16T14:29:33.160Z"
+  }
+},
+{
+  "model": "dashboard.wallpaper",
+  "pk": 9,
+  "fields": {
+    "title": "wall painting",
+    "category": 7,
+    "downloads": 3,
+    "country": "India",
+    "image": "wallpapers/wall.jpg",
+    "uploaded_at": "2026-08-19T13:45:21.510Z"
+  }
+},
+{
+  "model": "dashboard.userprofile",
+  "pk": 1,
+  "fields": {
+    "user": 3,
+    "full_name": "Rutuja Sabale",
+    "phone": "8965231470",
+    "country": "India",
+    "city": "Mumabi",
+    "created": "2026-08-18T15:26:11Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 1,
+  "fields": {
+    "username": "rutuja",
+    "action": "User Account Created",
+    "ip_address": null,
+    "timestamp": "2026-08-15T14:07:29.756Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 2,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T13:46:38.936Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 3,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T13:46:48.977Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 4,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T13:47:02.728Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 5,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T13:47:09.213Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 6,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T13:47:17.830Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 7,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/state/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T13:48:01.632Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 8,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/state/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T13:48:19.196Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 9,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/state/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T13:48:37.865Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 10,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/state/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T13:48:55.311Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 11,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:41:27.116Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 12,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:41:29.641Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 13,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:41:33.165Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 14,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/1/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:42:38.575Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 15,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/1/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:42:40.743Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 16,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/2/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:43:13.907Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 17,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/2/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:43:16.217Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 18,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/3/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:43:50.116Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 19,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/3/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:43:52.845Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 20,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/4/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:44:22.055Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 21,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/4/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:44:23.702Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 22,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/5/delete/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:44:37.959Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 23,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:46:57.753Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 24,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/6/delete/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:47:12.518Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 25,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/1/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:47:26.441Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 26,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/country/1/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:47:28.945Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 27,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/city/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:48:37.205Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 28,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/city/1/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:48:48.156Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 29,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/city/1/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:48:56.657Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 30,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/city/1/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:48:58.747Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 31,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/city/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:49:26.430Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 32,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/city/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:50:04.478Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 33,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/city/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:50:47.027Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 34,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/areavillage/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:51:57.580Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 35,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/areavillage/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:54:28.791Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 36,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/areavillage/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:55:31.781Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 37,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/areavillage/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:56:12.655Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 38,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/category/1/delete/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:56:32.635Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 39,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/category/2/delete/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:56:38.489Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 40,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/category/3/delete/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:56:43.932Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 41,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/category/6/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:56:53.824Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 42,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/category/6/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:56:56.389Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 43,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/adminsetting/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:58:03.392Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 44,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/adminsetting/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:58:22.057Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 45,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/adminsetting/1/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:58:37.311Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 46,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/adminsetting/1/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:58:48.840Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 47,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/adminsetting/1/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T14:58:50.607Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 48,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/aigeneration/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:01:22.054Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 49,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/aigeneration/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:01:53.216Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 50,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/aigeneration/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:02:27.098Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 51,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/chatsession/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:03:50.342Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 52,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/chatsession/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:04:13.660Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 53,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/chatsession/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:04:47.844Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 54,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/chatsession/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:05:37.487Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 55,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/chatsession/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:06:32.470Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 56,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/chatbotlog/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:07:12.749Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 57,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/chatbotlog/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:08:01.791Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 58,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/chatbotlog/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:08:22.830Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 59,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/generatedimage/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:09:54.237Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 60,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/generatedimage/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:10:55.180Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 61,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/generatedimage/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:11:43.785Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 62,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/notification/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:12:19.360Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 63,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/notification/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:12:44.973Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 64,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/notification/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:13:02.439Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 65,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/notification/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:13:16.445Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 66,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/order/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:14:37.694Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 67,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/order/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:15:02.464Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 68,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/order/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:15:18.677Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 69,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/order/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:15:58.197Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 70,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/orderitem/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:16:35.570Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 71,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/orderitem/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:16:52.673Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 72,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/orderitem/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:17:09.233Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 73,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/orderitem/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:17:32.439Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 74,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/payment/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:18:44.089Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 75,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/payment/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:19:16.152Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 76,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/payment/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:20:06.766Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 77,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/payment/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:20:40.614Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 78,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/permissionrecord/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:21:29.853Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 79,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/profitloss/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:22:37.692Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 80,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/profitloss/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:23:00.524Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 81,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/profitloss/2/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:23:05.832Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 82,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/profitloss/2/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:23:24.190Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 83,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/profitloss/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:23:49.917Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 84,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/profitloss/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:24:09.942Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 85,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/profitloss/3/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:24:31.138Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 86,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/profitloss/3/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:24:50.267Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 87,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/profitloss/4/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:25:47.518Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 88,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/userprofile/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T15:26:35.091Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 89,
+  "fields": {
+    "username": "rutuja",
+    "action": "User Logout",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T17:08:00.254Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 90,
+  "fields": {
+    "username": "rutuja",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T17:08:19.574Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 91,
+  "fields": {
+    "username": "rutuja",
+    "action": "User Logout",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T17:43:55.283Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 92,
+  "fields": {
+    "username": "rutuja",
+    "action": "User Logout",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T17:46:21.516Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 93,
+  "fields": {
+    "username": "rutuja",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T17:47:11.781Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 94,
+  "fields": {
+    "username": "rutuja",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T17:53:06.536Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 95,
+  "fields": {
+    "username": "admin",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-19T03:35:31.918Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 96,
+  "fields": {
+    "username": "admin",
+    "action": "User Logout",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-19T03:37:30.730Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 97,
+  "fields": {
+    "username": "rutuja",
+    "action": "POST /admin/dashboard/wallpaper/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-19T13:45:20.952Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 98,
+  "fields": {
+    "username": "admin",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-20T03:45:30.577Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 99,
+  "fields": {
+    "username": "rutuja",
+    "action": "User Logout",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-20T09:32:20.728Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 100,
+  "fields": {
+    "username": "admin",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-20T09:32:50.255Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 101,
+  "fields": {
+    "username": "admin",
+    "action": "User Logout",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-20T16:15:50.889Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 102,
+  "fields": {
+    "username": "admin",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-20T16:23:40.444Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 103,
+  "fields": {
+    "username": "admin",
+    "action": "User Logout",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-20T16:37:33.135Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 104,
+  "fields": {
+    "username": "admin",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-20T16:54:44.929Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 105,
+  "fields": {
+    "username": "admin",
+    "action": "User Logout",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-20T18:07:59.382Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 106,
+  "fields": {
+    "username": "admin",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-20T18:08:27.106Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 107,
+  "fields": {
+    "username": "admin",
+    "action": "User Logout",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-21T06:10:50.168Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 108,
+  "fields": {
+    "username": "admin",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-21T06:28:29.165Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 109,
+  "fields": {
+    "username": "admin",
+    "action": "User Logout",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-21T08:13:50.718Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 110,
+  "fields": {
+    "username": "admin",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-21T09:05:22.220Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 111,
+  "fields": {
+    "username": "admin",
+    "action": "User Logout",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-21T09:44:41.993Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 112,
+  "fields": {
+    "username": "admin",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-21T09:45:02.801Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 113,
+  "fields": {
+    "username": "admin",
+    "action": "User Logout",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-21T14:58:24.857Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 114,
+  "fields": {
+    "username": "admin",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-21T15:06:59.116Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 115,
+  "fields": {
+    "username": "admin",
+    "action": "User Logout",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-21T15:29:14.119Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 116,
+  "fields": {
+    "username": "admin",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-21T16:05:28.828Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 117,
+  "fields": {
+    "username": "admin",
+    "action": "User Logout",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-21T16:15:54.096Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 118,
+  "fields": {
+    "username": "admin",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-21T16:30:26.840Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 119,
+  "fields": {
+    "username": "admin",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-21T16:30:27.249Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 120,
+  "fields": {
+    "username": "admin",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-21T16:30:27.484Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 121,
+  "fields": {
+    "username": "admin",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-21T16:30:28.152Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 122,
+  "fields": {
+    "username": "admin",
+    "action": "User Logout",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-21T17:02:51.290Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 123,
+  "fields": {
+    "username": "admin",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-21T17:03:07.355Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 124,
+  "fields": {
+    "username": "admin",
+    "action": "User Logout",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-22T09:40:02.522Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 125,
+  "fields": {
+    "username": "admin",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-22T09:41:01.597Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 126,
+  "fields": {
+    "username": "admin",
+    "action": "User Logout",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-22T10:42:36.702Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 127,
+  "fields": {
+    "username": "admin",
+    "action": "User Login",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-22T10:42:58.027Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 128,
+  "fields": {
+    "username": "admin",
+    "action": "POST /admin/dashboard/generatedimage/1/change/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-22T11:00:11.358Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 129,
+  "fields": {
+    "username": "admin",
+    "action": "POST /admin/dashboard/aiwallpapergeneration/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-22T12:23:33.655Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 130,
+  "fields": {
+    "username": "admin",
+    "action": "POST /admin/dashboard/aiwallpapergeneration/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-22T12:23:45.738Z"
+  }
+},
+{
+  "model": "dashboard.useractivitylog",
+  "pk": 131,
+  "fields": {
+    "username": "admin",
+    "action": "POST /admin/dashboard/aiwallpapergeneration/add/",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-22T12:24:12.576Z"
+  }
+},
+{
+  "model": "dashboard.permissionrecord",
+  "pk": 1,
+  "fields": {
+    "user": 3,
+    "can_manage_users": true,
+    "can_manage_wallpapers": true,
+    "can_manage_ai": true,
+    "can_manage_orders": true,
+    "can_view_analytics": true,
+    "created": "2026-08-18T15:21:08Z"
+  }
+},
+{
+  "model": "dashboard.aiwallpaperstyle",
+  "pk": 1,
+  "fields": {
+    "title": "AI Painting",
+    "icon": "🎨",
+    "description": "Hand-painted artistic wall art — oils, watercolours, abstracts",
+    "is_active": true
+  }
+},
+{
+  "model": "dashboard.aiwallpaperstyle",
+  "pk": 2,
+  "fields": {
+    "title": "AI Wall Mural",
+    "icon": "🏛️",
+    "description": "Large-scale murals — heritage, European, tropical, temple art",
+    "is_active": true
+  }
+},
+{
+  "model": "dashboard.aiwallpaperstyle",
+  "pk": 3,
+  "fields": {
+    "title": "AI Wallpaper Roll",
+    "icon": "🪞",
+    "description": "Repeat-pattern wallpaper rolls — damask, floral, geometric",
+    "is_active": true
+  }
+},
+{
+  "model": "dashboard.aiwallpaperstyle",
+  "pk": 4,
+  "fields": {
+    "title": "AI Wall Art",
+    "icon": "🖼️",
+    "description": "Contemporary framed art — minimal, typography, mixed media",
+    "is_active": true
+  }
+},
+{
+  "model": "dashboard.aiwallpaperstyle",
+  "pk": 5,
+  "fields": {
+    "title": "AI Texture",
+    "icon": "✨",
+    "description": "Textured surfaces — metallic, stone, concrete, fabric",
+    "is_active": true
+  }
+},
+{
+  "model": "dashboard.aiwallpaperstyle",
+  "pk": 6,
+  "fields": {
+    "title": "AI Kids & Nursery",
+    "icon": "🧸",
+    "description": "Playful designs for children's rooms and nurseries",
+    "is_active": true
+  }
+},
+{
+  "model": "dashboard.aiwallpaperstyle",
+  "pk": 7,
+  "fields": {
+    "title": "AI 3D Mural",
+    "icon": "🌀",
+    "description": "Three-dimensional sculpted murals with depth illusion",
+    "is_active": true
+  }
+},
+{
+  "model": "dashboard.aiwallpaperstyle",
+  "pk": 8,
+  "fields": {
+    "title": "AI Ceiling Art",
+    "icon": "🌌",
+    "description": "Ceiling murals and painted ceiling designs",
+    "is_active": true
+  }
+},
+{
+  "model": "dashboard.aiwallpapergeneration",
+  "pk": 1,
+  "fields": {
+    "user": "Rutuja",
+    "style": 1,
+    "prompt": "A majestic golden Mahadev statue in dramatic cinematic neon lighting, highly detailed, 8k resolution",
+    "negative_prompt": "blurry, low quality, distorted, bad anatomy",
+    "aspect_ratio": "Landscape",
+    "generated_image": "",
+    "status": "completed",
+    "created_at": "2026-08-22T12:24:12.600Z"
+  }
+},
+{
+  "model": "dashboard.chatsession",
+  "pk": 1,
+  "fields": {
+    "user": "Vaishnavi",
+    "session_id": "chat-vaishnavi-001",
+    "started_at": "2026-08-18T15:04:47.870Z",
+    "ended_at": "2026-08-15T00:30:00Z"
+  }
+},
+{
+  "model": "dashboard.chatsession",
+  "pk": 2,
+  "fields": {
+    "user": "Priya",
+    "session_id": "chat-priya-002",
+    "started_at": "2026-08-18T15:05:37.510Z",
+    "ended_at": "2026-08-15T12:30:00Z"
+  }
+},
+{
+  "model": "dashboard.chatsession",
+  "pk": 3,
+  "fields": {
+    "user": "Amit",
+    "session_id": "chat-amit-003",
+    "started_at": "2026-08-18T15:06:32.490Z",
+    "ended_at": "2026-08-17T00:45:10Z"
+  }
+},
+{
+  "model": "dashboard.chatbotlog",
+  "pk": 1,
+  "fields": {
+    "session": 1,
+    "user": "Vaishnavi",
+    "message": "Can you help me generate a wallpaper?",
+    "response": "Sure! Please provide your wallpaper prompt and I will help you generate it.",
+    "created_at": "2026-08-18T15:07:12.774Z"
+  }
+},
+{
+  "model": "dashboard.chatbotlog",
+  "pk": 2,
+  "fields": {
+    "session": 2,
+    "user": "Priya",
+    "message": "How can I download a wallpaper?",
+    "response": "Select the wallpaper you like and click the Download button to download it.",
+    "created_at": "2026-08-18T15:08:01.818Z"
+  }
+},
+{
+  "model": "dashboard.chatbotlog",
+  "pk": 3,
+  "fields": {
+    "session": 3,
+    "user": "Amit",
+    "message": "Can you suggest a car wallpaper prompt?",
+    "response": "Try a prompt like: Luxury sports car on a modern road with cinematic lighting and a realistic background.",
+    "created_at": "2026-08-18T15:08:22.860Z"
+  }
+},
+{
+  "model": "dashboard.order",
+  "pk": 1,
+  "fields": {
+    "order_number": "ORD-1001",
+    "user": "vaishnavi",
+    "total_amount": "499.00",
+    "status": "Completed",
+    "created_at": "2026-08-18T15:14:37.759Z"
+  }
+},
+{
+  "model": "dashboard.order",
+  "pk": 2,
+  "fields": {
+    "order_number": "ORD-1002",
+    "user": "rahul",
+    "total_amount": "798.00",
+    "status": "Processing",
+    "created_at": "2026-08-18T15:15:02.489Z"
+  }
+},
+{
+  "model": "dashboard.order",
+  "pk": 3,
+  "fields": {
+    "order_number": "ORD-1003",
+    "user": "Priya",
+    "total_amount": "299.00",
+    "status": "Pending",
+    "created_at": "2026-08-18T15:15:18.701Z"
+  }
+},
+{
+  "model": "dashboard.order",
+  "pk": 4,
+  "fields": {
+    "order_number": "ORD-1004",
+    "user": "Amit",
+    "total_amount": "349.00",
+    "status": "Completed",
+    "created_at": "2026-08-18T15:15:58.246Z"
+  }
+},
+{
+  "model": "dashboard.orderitem",
+  "pk": 1,
+  "fields": {
+    "order": 1,
+    "product": "BMW Car Wallpaper",
+    "quantity": 1,
+    "price": "499.00"
+  }
+},
+{
+  "model": "dashboard.orderitem",
+  "pk": 2,
+  "fields": {
+    "order": 2,
+    "product": "Nature Forest Wallpaper",
+    "quantity": 1,
+    "price": "299.00"
+  }
+},
+{
+  "model": "dashboard.orderitem",
+  "pk": 3,
+  "fields": {
+    "order": 3,
+    "product": "Abstract Art Wallpaper",
+    "quantity": 1,
+    "price": "299.00"
+  }
+},
+{
+  "model": "dashboard.orderitem",
+  "pk": 4,
+  "fields": {
+    "order": 4,
+    "product": "Rose Garden Wallpaper",
+    "quantity": 1,
+    "price": "349.00"
+  }
+},
+{
+  "model": "dashboard.payment",
+  "pk": 1,
+  "fields": {
+    "order": 1,
+    "payment_id": "PAY-1001",
+    "amount": "499.00",
+    "status": "Paid",
+    "paid_at": "2026-08-15T06:30:00Z"
+  }
+},
+{
+  "model": "dashboard.payment",
+  "pk": 2,
+  "fields": {
+    "order": 2,
+    "payment_id": "PAY-1002",
+    "amount": "798.00",
+    "status": "Paid",
+    "paid_at": "2026-08-16T12:30:00Z"
+  }
+},
+{
+  "model": "dashboard.payment",
+  "pk": 3,
+  "fields": {
+    "order": 3,
+    "payment_id": "ORD-1003",
+    "amount": "299.00",
+    "status": "Pending",
+    "paid_at": "2026-08-17T02:40:50Z"
+  }
+},
+{
+  "model": "dashboard.payment",
+  "pk": 4,
+  "fields": {
+    "order": 4,
+    "payment_id": "PAY-1004",
+    "amount": "349.00",
+    "status": "Paid",
+    "paid_at": "2026-08-17T12:30:00Z"
+  }
+},
+{
+  "model": "dashboard.profitloss",
+  "pk": 1,
+  "fields": {
+    "date": "2026-08-15",
+    "revenue": "40000.00",
+    "expense": "12000.00",
+    "profit": "28000.00"
+  }
+},
+{
+  "model": "dashboard.profitloss",
+  "pk": 2,
+  "fields": {
+    "date": "2026-08-16",
+    "revenue": "40000.00",
+    "expense": "50000.00",
+    "profit": "35000.00"
+  }
+},
+{
+  "model": "dashboard.profitloss",
+  "pk": 3,
+  "fields": {
+    "date": "2026-08-17",
+    "revenue": "60000.00",
+    "expense": "10000.00",
+    "profit": "20000.00"
+  }
+},
+{
+  "model": "dashboard.profitloss",
+  "pk": 4,
+  "fields": {
+    "date": "2026-08-18",
+    "revenue": "46000.00",
+    "expense": "15000.00",
+    "profit": "32000.00"
+  }
+},
+{
+  "model": "dashboard.notification",
+  "pk": 1,
+  "fields": {
+    "title": "New Wallpaper Added",
+    "message": "A new wallpaper has been successfully added to the wallpaper collection.",
+    "is_read": true,
+    "created_at": "2026-08-18T15:12:19.380Z"
+  }
+},
+{
+  "model": "dashboard.notification",
+  "pk": 2,
+  "fields": {
+    "title": "AI Generation Completed",
+    "message": "Your AI wallpaper generation has been completed successfully.",
+    "is_read": true,
+    "created_at": "2026-08-18T15:12:44.992Z"
+  }
+},
+{
+  "model": "dashboard.notification",
+  "pk": 3,
+  "fields": {
+    "title": "New User Registered",
+    "message": "A new user has successfully registered on the platform.",
+    "is_read": true,
+    "created_at": "2026-08-18T15:13:02.460Z"
+  }
+},
+{
+  "model": "dashboard.notification",
+  "pk": 4,
+  "fields": {
+    "title": "Wallpaper Downloaded",
+    "message": "A wallpaper was downloaded successfully by a user.",
+    "is_read": true,
+    "created_at": "2026-08-18T15:13:16.460Z"
+  }
+},
+{
+  "model": "dashboard.adminsetting",
+  "pk": 1,
+  "fields": {
+    "setting_name": "Default Country",
+    "setting_value": "India",
+    "updated_at": "2026-08-18T14:58:50.638Z"
+  }
+},
+{
+  "model": "dashboard.adminsetting",
+  "pk": 2,
+  "fields": {
+    "setting_name": "Site Name",
+    "setting_value": "Mahashankh Decor",
+    "updated_at": "2026-08-18T14:58:22.077Z"
+  }
+}
+]
