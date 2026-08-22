@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Sum
 
-from .models import Category, Wallpaper, UserActivityLog
+from .models import Category, Wallpaper, UserActivityLog, AIWallpaperStyle, AIWallpaperGeneration
 
 
 @login_required(login_url='/admin/login/')
@@ -139,10 +139,21 @@ def user_activities_view(request):
 @login_required(login_url='/admin/login/')
 def ai_generations_view(request):
 
+    generations = (
+        AIWallpaperGeneration.objects
+        .select_related('style')
+        .order_by('-created_at')
+    )
+
+    styles = AIWallpaperStyle.objects.all()
+
     return render(
         request,
         'dashboard/ai_generations.html',
-        {}
+        {
+            'generations': generations,
+            'styles': styles,
+        }
     )
 
 

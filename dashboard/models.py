@@ -344,15 +344,58 @@ class PermissionRecord(models.Model):
 
 
 # ============================================================
-# AI
+# AI WALLPAPER GENERATOR
 # ============================================================
 
-class AIGeneration(models.Model):
+class AIWallpaperStyle(models.Model):
+
+    title = models.CharField(
+        max_length=100,
+        default=""
+    )
+
+    icon = models.CharField(
+        max_length=50,
+        blank=True,
+        default=""
+    )
+
+    description = models.TextField(
+        blank=True,
+        default=""
+    )
+
+    is_active = models.BooleanField(
+        default=True
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ["id"]
+
+
+class AIWallpaperGeneration(models.Model):
+
+    ASPECT_RATIO_CHOICES = [
+        ("Square", "Square"),
+        ("Landscape", "Landscape"),
+        ("Portrait", "Portrait"),
+    ]
 
     user = models.CharField(
         max_length=150,
         blank=True,
         default=""
+    )
+
+    style = models.ForeignKey(
+        AIWallpaperStyle,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="generations"
     )
 
     prompt = models.TextField(
@@ -365,10 +408,16 @@ class AIGeneration(models.Model):
         default=""
     )
 
-    model = models.CharField(
-        max_length=150,
+    aspect_ratio = models.CharField(
+        max_length=20,
+        choices=ASPECT_RATIO_CHOICES,
+        default="Square"
+    )
+
+    generated_image = models.ImageField(
+        upload_to="ai_wallpapers/",
         blank=True,
-        default=""
+        null=True
     )
 
     status = models.CharField(
@@ -381,45 +430,7 @@ class AIGeneration(models.Model):
     )
 
     def __str__(self):
-        return self.prompt[:50]
-
-    class Meta:
-        ordering = ["-created_at"]
-
-
-class GeneratedImage(models.Model):
-
-    generation = models.ForeignKey(
-        AIGeneration,
-        on_delete=models.CASCADE,
-        related_name="images",
-        null=True,
-        blank=True
-    )
-
-    user = models.CharField(
-        max_length=150,
-        blank=True,
-        default=""
-    )
-
-    title = models.CharField(
-        max_length=200,
-        default=""
-    )
-
-    image = models.ImageField(
-        upload_to="generated_images/",
-        blank=True,
-        null=True
-    )
-
-    created_at = models.DateTimeField(
-        auto_now_add=True
-    )
-
-    def __str__(self):
-        return self.title
+        return f"{self.user} - {self.prompt[:30]}"
 
     class Meta:
         ordering = ["-created_at"]

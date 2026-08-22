@@ -1,4 +1,3 @@
-```html
 {% extends 'dashboard/base.html' %}
 
 {% block content %}
@@ -6,16 +5,16 @@
 <div class="flex items-center justify-between mb-6">
 
     <div>
-        <h1 class="text-2xl font-bold text-[#4a3f35]">
+        <h1 class="text-2xl font-bold text-[#e8e2d5]">
             Super Admin Control Panel
         </h1>
 
-        <p class="text-xs text-[#8c7355] mt-1">
+        <p class="text-xs text-[#a39585] mt-1">
             Global User Tracking, AI Analytics & System Logs
         </p>
     </div>
 
-    <span class="text-xs font-semibold px-3 py-1.5 bg-[#f4efe6] text-[#6e5f51] border border-[#e8e2d5] rounded-md">
+    <span class="text-xs font-semibold px-3 py-1.5 bg-[#2a2420] text-[#c2b299] border border-[#3e342c] rounded-md">
         <i class="fa-solid fa-globe mr-1"></i>
         Multi-Country Analytics
     </span>
@@ -29,23 +28,23 @@
 
 <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
 
-    <div class="p-6 rounded-xl bg-white border border-[#e8e2d5] shadow-sm">
+    <div class="p-6 rounded-xl bg-[#1e1c1a] border border-[#3e342c] shadow-sm">
 
         <div class="flex justify-between items-start">
 
             <div>
 
-                <p class="text-xs font-bold text-[#8c7355] uppercase tracking-wider">
+                <p class="text-xs font-bold text-[#c2b299] uppercase tracking-wider">
                     Total Users
                 </p>
 
-                <h2 class="text-3xl font-extrabold text-[#4a3f35] mt-2">
+                <h2 class="text-3xl font-extrabold text-[#f4efe6] mt-2">
                     {{ total_users }}
                 </h2>
 
             </div>
 
-            <span class="p-3 bg-[#fbf9f5] text-[#8c7355] rounded-lg">
+            <span class="p-3 bg-[#2a2623] text-[#c2b299] rounded-lg">
                 <i class="fa-solid fa-users text-xl"></i>
             </span>
 
@@ -58,23 +57,23 @@
     </div>
 
 
-    <div class="p-6 rounded-xl bg-white border border-[#e8e2d5] shadow-sm">
+    <div class="p-6 rounded-xl bg-[#1e1c1a] border border-[#3e342c] shadow-sm">
 
         <div class="flex justify-between items-start">
 
             <div>
 
-                <p class="text-xs font-bold text-[#8c7355] uppercase tracking-wider">
+                <p class="text-xs font-bold text-[#c2b299] uppercase tracking-wider">
                     Total Wallpapers
                 </p>
 
-                <h2 class="text-3xl font-extrabold text-[#4a3f35] mt-2">
+                <h2 class="text-3xl font-extrabold text-[#f4efe6] mt-2">
                     {{ total_wallpapers }}
                 </h2>
 
             </div>
 
-            <span class="p-3 bg-[#fbf9f5] text-[#8c7355] rounded-lg">
+            <span class="p-3 bg-[#2a2623] text-[#c2b299] rounded-lg">
                 <i class="fa-solid fa-image text-xl"></i>
             </span>
 
@@ -87,23 +86,23 @@
     </div>
 
 
-    <div class="p-6 rounded-xl bg-white border border-[#e8e2d5] shadow-sm">
+    <div class="p-6 rounded-xl bg-[#1e1c1a] border border-[#3e342c] shadow-sm">
 
         <div class="flex justify-between items-start">
 
             <div>
 
-                <p class="text-xs font-bold text-[#8c7355] uppercase tracking-wider">
+                <p class="text-xs font-bold text-[#c2b299] uppercase tracking-wider">
                     Total Downloads
                 </p>
 
-                <h2 class="text-3xl font-extrabold text-[#4a3f35] mt-2">
+                <h2 class="text-3xl font-extrabold text-[#f4efe6] mt-2">
                     {{ total_downloads }}
                 </h2>
 
             </div>
 
-            <span class="p-3 bg-[#fbf9f5] text-[#8c7355] rounded-lg">
+            <span class="p-3 bg-[#2a2623] text-[#c2b299] rounded-lg">
                 <i class="fa-solid fa-download text-xl"></i>
             </span>
 
@@ -116,23 +115,23 @@
     </div>
 
 
-    <div class="p-6 rounded-xl bg-white border border-[#e8e2d5] shadow-sm">
+    <div class="p-6 rounded-xl bg-[#1e1c1a] border border-[#3e342c] shadow-sm">
 
         <div class="flex justify-between items-start">
 
             <div>
 
-                <p class="text-xs font-bold text-[#8c7355] uppercase tracking-wider">
+                <p class="text-xs font-bold text-[#c2b299] uppercase tracking-wider">
                     Categories
                 </p>
 
-                <h2 class="text-3xl font-extrabold text-[#4a3f35] mt-2">
+                <h2 class="text-3xl font-extrabold text-[#f4efe6] mt-2">
                     {{ total_categories }}
                 </h2>
 
             </div>
 
-            <span class="p-3 bg-[#fbf9f5] text-[#8c7355] rounded-lg">
+            <span class="p-3 bg-[#2a2623] text-[#c2b299] rounded-lg">
                 <i class="fa-solid fa-layer-group text-xl"></i>
             </span>
 
@@ -156,13 +155,13 @@
 
     <!-- COUNTRY GRAPH -->
 
-    <div class="lg:col-span-2 bg-white p-6 rounded-xl border border-[#e8e2d5] shadow-sm">
+    <div class="lg:col-span-2 bg-[#1e1c1a] p-6 rounded-xl border border-[#3e342c] shadow-sm">
 
         <div class="flex items-center justify-between mb-4">
 
             <div>
 
-                <h3 class="text-base font-bold text-[#4a3f35]">
+                <h3 class="text-base font-bold text-[#f4efe6]">
                     Country & Region Analytics
                 </h3>
 
@@ -172,7 +171,7 @@
 
             </div>
 
-            <span class="text-xs px-2 py-1 rounded-md bg-[#f4efe6] text-[#8c7355]">
+            <span class="text-xs px-2 py-1 rounded-md bg-[#2a2420] text-[#c2b299]">
                 Live Data
             </span>
 
@@ -189,9 +188,9 @@
 
     <!-- CATEGORY GRAPH -->
 
-    <div class="bg-white p-6 rounded-xl border border-[#e8e2d5] shadow-sm">
+    <div class="bg-[#1e1c1a] p-6 rounded-xl border border-[#3e342c] shadow-sm">
 
-        <h3 class="text-base font-bold text-[#4a3f35]">
+        <h3 class="text-base font-bold text-[#f4efe6]">
             Wallpaper Categories
         </h3>
 
@@ -214,17 +213,17 @@
      RECENT ACTIVITIES
 ========================= -->
 
-<div class="bg-white p-6 rounded-xl border border-[#e8e2d5] shadow-sm mb-8">
+<div class="bg-[#1e1c1a] p-6 rounded-xl border border-[#3e342c] shadow-sm mb-8">
 
     <div class="flex justify-between items-center mb-4">
 
-        <h3 class="text-base font-bold text-[#4a3f35]">
+        <h3 class="text-base font-bold text-[#f4efe6]">
             Recent User Activities
         </h3>
 
         <a
             href="{% url 'user_activities' %}"
-            class="text-xs font-semibold text-[#8c7355] hover:underline"
+            class="text-xs font-semibold text-[#c2b299] hover:underline"
         >
             View All
         </a>
@@ -238,7 +237,7 @@
 
             <thead>
 
-                <tr class="border-b border-[#f4efe6] bg-[#fbf9f5] text-xs font-bold text-[#8c7355] uppercase">
+                <tr class="border-b border-[#3e342c] bg-[#2a2623] text-xs font-bold text-[#c2b299] uppercase">
 
                     <th class="p-3">
                         Username
@@ -257,17 +256,17 @@
             </thead>
 
 
-            <tbody class="divide-y divide-[#f4efe6] text-sm">
+            <tbody class="divide-y divide-[#3e342c] text-sm">
 
                 {% for activity in recent_activities %}
 
-                <tr class="hover:bg-[#fcfbfa]">
+                <tr class="hover:bg-[#252220]">
 
-                    <td class="p-3 font-semibold text-[#4a3f35]">
+                    <td class="p-3 font-semibold text-[#f4efe6]">
                         {{ activity.username }}
                     </td>
 
-                    <td class="p-3 text-[#6e5f51]">
+                    <td class="p-3 text-[#c2b299]">
                         {{ activity.action }}
                     </td>
 
@@ -311,7 +310,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================
-       COUNTRY CHART
+        COUNTRY CHART
     ========================= */
 
     const countryCanvas =
@@ -363,7 +362,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                             data: countryDownloads,
 
-                            backgroundColor: "#8c7355",
+                            backgroundColor: "#c2b299",
 
                             borderRadius: 5,
 
@@ -411,7 +410,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                             ticks: {
 
-                                color: "#6e5f51"
+                                color: "#c2b299"
 
                             }
 
@@ -421,11 +420,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
                             beginAtZero: true,
 
+                            grid: {
+
+                                color: "#3e342c"
+
+                            },
+
                             ticks: {
 
                                 precision: 0,
 
-                                color: "#6e5f51"
+                                color: "#c2b299"
 
                             }
 
@@ -442,7 +447,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================
-       CATEGORY CHART
+        CATEGORY CHART
     ========================= */
 
     const categoryCanvas =
@@ -510,7 +515,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                             borderWidth: 2,
 
-                            borderColor: "#ffffff"
+                            borderColor: "#1e1c1a"
 
                         }
 
@@ -538,7 +543,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                                 padding: 12,
 
-                                boxWidth: 12
+                                boxWidth: 12,
+
+                                color: "#c2b299"
 
                             }
 
@@ -559,9 +566,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+    /* ============================================================
+       PLOTLY WORLD MAP ZOOM-IN / DOUBLE CLICK FIX
+       ============================================================ */
+    
+    function enablePlotlyZoom() {
+        const plotlyDivs = document.querySelectorAll('.js-plotly-plot');
+        
+        plotlyDivs.forEach(function(mapEl) {
+            if (window.Plotly) {
+                // Enable Dragmode Zoom
+                Plotly.relayout(mapEl, {
+                    'dragmode': 'zoom',
+                    'geo.fitbounds': false
+                });
+
+                // Update configuration for scroll & double click zoom
+                Plotly.plot(mapEl, [], {}, {
+                    scrollZoom: true,
+                    displayModeBar: true,
+                    doubleClick: 'reset+autosize'
+                });
+
+                // Trigger zoom on manual double click
+                mapEl.on('plotly_doubleclick', function() {
+                    Plotly.relayout(mapEl, {
+                        'geo.projection.scale': 2.5
+                    });
+                });
+            }
+        });
+    }
+
+    // Delay 1 second to ensure maps are loaded
+    setTimeout(enablePlotlyZoom, 1000);
+
 });
 
 </script>
 
 {% endblock %}
-```

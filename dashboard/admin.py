@@ -13,8 +13,8 @@ from .models import (
     UserProfile,
     UserActivityLog,
     PermissionRecord,
-    AIGeneration,
-    GeneratedImage,
+    AIWallpaperStyle,
+    AIWallpaperGeneration,
     ChatSession,
     ChatbotLog,
     Order,
@@ -32,7 +32,6 @@ from .models import (
 
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
-
     list_display = (
         "id",
         "country",
@@ -42,20 +41,9 @@ class CountryAdmin(admin.ModelAdmin):
         "products",
         "state_count",
     )
-
-    search_fields = (
-        "country",
-        "continent",
-    )
-
-    list_filter = (
-        "continent",
-        "country_type",
-    )
-
-    ordering = (
-        "ranking",
-    )
+    search_fields = ("country", "continent")
+    list_filter = ("continent", "country_type")
+    ordering = ("ranking",)
 
     def state_count(self, obj):
         return obj.states.count()
@@ -65,7 +53,6 @@ class CountryAdmin(admin.ModelAdmin):
 
 @admin.register(State)
 class StateAdmin(admin.ModelAdmin):
-
     list_display = (
         "id",
         "name",
@@ -73,20 +60,13 @@ class StateAdmin(admin.ModelAdmin):
         "city_count",
         "slug",
     )
-
     search_fields = (
         "name",
         "country__country",
         "slug",
     )
-
-    list_filter = (
-        "country",
-    )
-
-    ordering = (
-        "name",
-    )
+    list_filter = ("country",)
+    ordering = ("name",)
 
     def city_count(self, obj):
         return obj.cities.count()
@@ -96,7 +76,6 @@ class StateAdmin(admin.ModelAdmin):
 
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
-
     list_display = (
         "id",
         "name",
@@ -106,22 +85,17 @@ class CityAdmin(admin.ModelAdmin):
         "area_count",
         "tile_hub",
     )
-
     search_fields = (
         "name",
         "state__name",
         "country__country",
     )
-
     list_filter = (
         "country",
         "state",
         "tile_hub",
     )
-
-    ordering = (
-        "name",
-    )
+    ordering = ("name",)
 
     def area_count(self, obj):
         return obj.area_villages.count()
@@ -131,7 +105,6 @@ class CityAdmin(admin.ModelAdmin):
 
 @admin.register(AreaVillage)
 class AreaVillageAdmin(admin.ModelAdmin):
-
     list_display = (
         "id",
         "name",
@@ -142,7 +115,6 @@ class AreaVillageAdmin(admin.ModelAdmin):
         "pincode",
         "showrooms",
     )
-
     search_fields = (
         "name",
         "city__name",
@@ -150,17 +122,13 @@ class AreaVillageAdmin(admin.ModelAdmin):
         "country__country",
         "pincode",
     )
-
     list_filter = (
         "country",
         "state",
         "city",
         "area_type",
     )
-
-    ordering = (
-        "name",
-    )
+    ordering = ("name",)
 
 
 # ============================================================
@@ -169,19 +137,12 @@ class AreaVillageAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-
     list_display = (
         "id",
         "name",
     )
-
-    search_fields = (
-        "name",
-    )
-
-    ordering = (
-        "name",
-    )
+    search_fields = ("name",)
+    ordering = ("name",)
 
 
 @admin.register(Wallpaper)
@@ -214,9 +175,7 @@ class WallpaperAdmin(admin.ModelAdmin):
         "category__name",
     )
 
-    ordering = (
-        "-uploaded_at",
-    )
+    ordering = ("-uploaded_at",)
 
     readonly_fields = (
         "uploaded_at",
@@ -234,29 +193,27 @@ class WallpaperAdmin(admin.ModelAdmin):
     )
 
     def preview(self, obj):
-
         if obj.image:
             return format_html(
-                '<img src="{}" width="70" height="50" '
-                'style="object-fit:cover;border-radius:4px;" />',
+                '<img src="{}" '
+                'style="width:60px;height:60px;'
+                'object-fit:cover;border-radius:5px;" />',
                 obj.image.url
             )
-
         return "No Image"
 
-    preview.short_description = "Preview"
+    preview.short_description = "Image"
 
     def admin_image_preview(self, obj):
-
         if obj.image:
             return format_html(
-                '<img src="{}" width="300" '
-                'style="max-height:250px;object-fit:contain;'
-                'border:1px solid #ddd;border-radius:6px;" />',
+                '<img src="{}" '
+                'style="max-width:300px;'
+                'max-height:300px;'
+                'object-fit:contain;" />',
                 obj.image.url
             )
-
-        return "No image uploaded"
+        return "No Image"
 
     admin_image_preview.short_description = "Image Preview"
 
@@ -281,7 +238,7 @@ class CustomUserAdmin(UserAdmin):
         "date_joined",
         "last_login",
         "order_count",
-        "image_count",
+        "generated_wallpaper_count",
         "role",
     )
 
@@ -305,9 +262,7 @@ class CustomUserAdmin(UserAdmin):
         "last_name",
     )
 
-    ordering = (
-        "-date_joined",
-    )
+    ordering = ("-date_joined",)
 
     readonly_fields = (
         "last_login",
@@ -322,7 +277,7 @@ class CustomUserAdmin(UserAdmin):
                     "username",
                     "password",
                 )
-            }
+            },
         ),
         (
             "Personal Information",
@@ -332,7 +287,7 @@ class CustomUserAdmin(UserAdmin):
                     "last_name",
                     "email",
                 )
-            }
+            },
         ),
         (
             "Permissions",
@@ -344,7 +299,7 @@ class CustomUserAdmin(UserAdmin):
                     "groups",
                     "user_permissions",
                 )
-            }
+            },
         ),
         (
             "Important Dates",
@@ -353,7 +308,7 @@ class CustomUserAdmin(UserAdmin):
                     "last_login",
                     "date_joined",
                 )
-            }
+            },
         ),
     )
 
@@ -364,18 +319,20 @@ class CustomUserAdmin(UserAdmin):
 
     order_count.short_description = "Orders"
 
-    def image_count(self, obj):
-        return GeneratedImage.objects.filter(
+    def generated_wallpaper_count(self, obj):
+        return AIWallpaperGeneration.objects.filter(
             user=obj.username
         ).count()
 
-    image_count.short_description = "Images"
+    generated_wallpaper_count.short_description = "AI Wallpapers"
 
     def role(self, obj):
         if obj.is_superuser:
             return "Super Admin"
+
         if obj.is_staff:
             return "Admin"
+
         return "User"
 
     role.short_description = "Role"
@@ -413,9 +370,7 @@ class UserProfileAdmin(admin.ModelAdmin):
         "created",
     )
 
-    ordering = (
-        "-created",
-    )
+    ordering = ("-created",)
 
 
 @admin.register(UserActivityLog)
@@ -445,9 +400,7 @@ class UserActivityLogAdmin(admin.ModelAdmin):
         "timestamp",
     )
 
-    ordering = (
-        "-timestamp",
-    )
+    ordering = ("-timestamp",)
 
 
 @admin.register(PermissionRecord)
@@ -479,17 +432,57 @@ class PermissionRecordAdmin(admin.ModelAdmin):
 
 
 # ============================================================
-# AI
+# AI WALLPAPER GENERATOR
 # ============================================================
 
-@admin.register(AIGeneration)
-class AIGenerationAdmin(admin.ModelAdmin):
+@admin.register(AIWallpaperStyle)
+class AIWallpaperStyleAdmin(admin.ModelAdmin):
 
     list_display = (
         "id",
+        "icon",
+        "title",
+        "description",
+        "is_active",
+    )
+
+    list_editable = (
+        "is_active",
+    )
+
+    search_fields = (
+        "title",
+        "description",
+    )
+
+    list_filter = (
+        "is_active",
+    )
+
+    ordering = ("id",)
+
+
+@admin.register(AIWallpaperGeneration)
+class AIWallpaperGenerationAdmin(admin.ModelAdmin):
+
+    list_display = (
+        "id",
+        "image_preview",
         "user",
-        "prompt_short",
-        "model",
+        "style",
+        "aspect_ratio",
+        "status",
+        "created_at",
+    )
+
+    list_display_links = (
+        "id",
+        "user",
+    )
+
+    list_filter = (
+        "style",
+        "aspect_ratio",
         "status",
         "created_at",
     )
@@ -497,77 +490,69 @@ class AIGenerationAdmin(admin.ModelAdmin):
     search_fields = (
         "user",
         "prompt",
-        "model",
+        "negative_prompt",
     )
 
-    list_filter = (
-        "status",
-        "model",
-        "created_at",
-    )
-
-    ordering = (
-        "-created_at",
-    )
-
-    def prompt_short(self, obj):
-        return obj.prompt[:60]
-
-    prompt_short.short_description = "Prompt"
-
-
-@admin.register(GeneratedImage)
-class GeneratedImageAdmin(admin.ModelAdmin):
-
-    list_display = (
-        "id",
-        "preview",
-        "title",
-        "user",
-        "generation",
-        "created_at",
-    )
-
-    search_fields = (
-        "title",
-        "user",
-    )
-
-    list_filter = (
-        "created_at",
-    )
+    ordering = ("-created_at",)
 
     readonly_fields = (
         "preview_large",
         "created_at",
     )
 
-    def preview(self, obj):
+    fields = (
+        "user",
+        "style",
+        "prompt",
+        "negative_prompt",
+        "aspect_ratio",
+        "generated_image",
+        "preview_large",
+        "status",
+        "created_at",
+    )
 
-        if obj.image:
-            return format_html(
-                '<img src="{}" width="70" height="50" '
-                'style="object-fit:cover;border-radius:4px;" />',
-                obj.image.url
-            )
+    def image_preview(self, obj):
+        if obj.generated_image:
+            try:
+                return format_html(
+                    '<img src="{}" '
+                    'style="width:60px;height:60px;'
+                    'object-fit:cover;'
+                    'border-radius:5px;'
+                    'border:1px solid #ccc;" />',
+                    obj.generated_image.url
+                )
+            except ValueError:
+                pass
 
         return "No Image"
 
-    preview.short_description = "Preview"
+    image_preview.short_description = "Image"
 
     def preview_large(self, obj):
+        if obj.generated_image:
+            try:
+                return format_html(
+                    '<img src="{}" '
+                    'style="max-width:300px;'
+                    'max-height:300px;'
+                    'object-fit:contain;'
+                    'border-radius:6px;'
+                    'border:1px solid #ccc;" />',
+                    obj.generated_image.url
+                )
+            except ValueError:
+                pass
 
-        if obj.image:
-            return format_html(
-                '<img src="{}" width="350" '
-                'style="max-height:300px;object-fit:contain;" />',
-                obj.image.url
-            )
-
-        return "No image"
+        return "No Image"
 
     preview_large.short_description = "Image Preview"
 
+
+# ============================================================
+# CHAT
+# ============================================================
 
 @admin.register(ChatSession)
 class ChatSessionAdmin(admin.ModelAdmin):
@@ -589,9 +574,7 @@ class ChatSessionAdmin(admin.ModelAdmin):
         "started_at",
     )
 
-    ordering = (
-        "-started_at",
-    )
+    ordering = ("-started_at",)
 
 
 @admin.register(ChatbotLog)
@@ -615,12 +598,10 @@ class ChatbotLogAdmin(admin.ModelAdmin):
         "created_at",
     )
 
-    ordering = (
-        "-created_at",
-    )
+    ordering = ("-created_at",)
 
     def message_short(self, obj):
-        return obj.message[:60]
+        return obj.message[:60] if obj.message else ""
 
     message_short.short_description = "Message"
 
@@ -651,9 +632,7 @@ class OrderAdmin(admin.ModelAdmin):
         "created_at",
     )
 
-    ordering = (
-        "-created_at",
-    )
+    ordering = ("-created_at",)
 
 
 @admin.register(OrderItem)
@@ -670,10 +649,6 @@ class OrderItemAdmin(admin.ModelAdmin):
     search_fields = (
         "product",
         "order__order_number",
-    )
-
-    list_filter = (
-        "quantity",
     )
 
 
@@ -715,9 +690,7 @@ class ProfitLossAdmin(admin.ModelAdmin):
         "date",
     )
 
-    ordering = (
-        "-date",
-    )
+    ordering = ("-date",)
 
 
 # ============================================================
@@ -744,9 +717,7 @@ class NotificationAdmin(admin.ModelAdmin):
         "created_at",
     )
 
-    ordering = (
-        "-created_at",
-    )
+    ordering = ("-created_at",)
 
 
 @admin.register(AdminSetting)
@@ -768,6 +739,4 @@ class AdminSettingAdmin(admin.ModelAdmin):
         "updated_at",
     )
 
-    ordering = (
-        "setting_name",
-    )
+    ordering = ("setting_name",)

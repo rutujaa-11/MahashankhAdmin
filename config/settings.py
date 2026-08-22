@@ -11,7 +11,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-your-secret-key-here'
 
-
 DEBUG = os.getenv("DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = [
@@ -26,8 +25,11 @@ ALLOWED_HOSTS = [
 # ============================================================
 
 INSTALLED_APPS = [
+
+    # Jazzmin must come before Django admin
     'jazzmin',
 
+    # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -35,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Project apps
     'dashboard',
 ]
 
@@ -44,6 +47,7 @@ INSTALLED_APPS = [
 # ============================================================
 
 MIDDLEWARE = [
+
     'django.middleware.security.SecurityMiddleware',
 
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -60,6 +64,7 @@ MIDDLEWARE = [
 
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+    # Custom activity tracking
     'dashboard.middleware.UserActivityMiddleware',
 ]
 
@@ -117,9 +122,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE':
+            'django.db.backends.sqlite3',
 
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME':
+            BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -129,6 +136,7 @@ DATABASES = {
 # ============================================================
 
 AUTH_PASSWORD_VALIDATORS = [
+
     {
         'NAME':
             'django.contrib.auth.password_validation.'
@@ -198,25 +206,36 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # ============================================================
-# JAZZMIN CONFIGURATION
+# JAZZMIN ADMIN CONFIGURATION
 # ============================================================
 
 JAZZMIN_SETTINGS = {
 
-    "site_title":
-        "Wallpaper Admin",
+    # ========================================================
+    # BRANDING
+    # ========================================================
 
-    "site_header":
-        "Wallpaper Panel",
+    "site_title": "Mahashankh Admin",
 
-    "site_brand":
-        "Mahashankh Wallpapers",
+    "site_header": "Mahashankh Admin Panel",
 
-    "welcome_sign":
-        "Welcome to Wallpaper Admin Dashboard",
+    "site_brand": "Mahashankh Wallpapers",
 
-    "copyright":
-        "Mahashankh Ltd",
+    "welcome_sign": "Welcome to Mahashankh Admin Dashboard",
+
+    "copyright": "Mahashankh Design & Technology",
+
+    # Correct Static Paths
+    "custom_css": "admin/css/mahashankh.css",
+    "custom_js": "admin/js/mahashankh-theme.js",  
+
+    "site_logo": None, 
+    "login_logo": None,
+
+
+    # ========================================================
+    # SIDEBAR
+    # ========================================================
 
     "show_sidebar":
         True,
@@ -224,41 +243,165 @@ JAZZMIN_SETTINGS = {
     "navigation_expanded":
         True,
 
-    "hide_apps":
-        [],
 
-    "hide_models":
-        [],
+    # ========================================================
+    # HIDE UNNECESSARY MODELS
+    # ========================================================
 
-    "order_with_respect_to":
-        [
-            "dashboard",
-            "auth",
-        ],
+    # Village is not required in the visible admin sidebar
+    "hide_models": [
+
+        "dashboard.areavillage",
+    ],
+
+
+    "hide_apps": [],
+
+
+    # ========================================================
+    # PROPER ADMIN MENU ORDER
+    # ========================================================
+
+    "order_with_respect_to": [
+
+        # -------------------------------
+        # MAIN
+        # -------------------------------
+
+        "dashboard",
+
+
+        # -------------------------------
+        # WALLPAPER MANAGEMENT
+        # -------------------------------
+
+        "dashboard.category",
+
+        "dashboard.wallpaper",
+
+
+        # -------------------------------
+        # USER MANAGEMENT
+        # -------------------------------
+
+        "auth.user",
+
+        "dashboard.userprofile",
+
+        "dashboard.useractivitylog",
+
+
+        # -------------------------------
+        # AI MANAGEMENT
+        # -------------------------------
+
+        "dashboard.aigeneration",
+
+        "dashboard.generatedimage",
+
+
+        # -------------------------------
+        # CHAT MANAGEMENT
+        # -------------------------------
+
+        "dashboard.chatsession",
+
+        "dashboard.chatbotlog",
+
+
+        # -------------------------------
+        # COMMERCE
+        # -------------------------------
+
+        "dashboard.product",
+
+        "dashboard.order",
+
+
+        # -------------------------------
+        # SYSTEM
+        # -------------------------------
+
+        "dashboard.permissionrecord",
+
+        "auth.group",
+    ],
+
+
+    # ========================================================
+    # ADMIN ICONS
+    # ========================================================
 
     "icons": {
 
+        # Dashboard
         "dashboard":
-            "fas fa-chart-line",
+            "fas fa-chart-pie",
 
+
+        # Wallpaper Management
         "dashboard.category":
             "fas fa-layer-group",
 
         "dashboard.wallpaper":
             "fas fa-images",
 
+
+        # User Management
+        "auth.user":
+            "fas fa-users",
+
+        "dashboard.userprofile":
+            "fas fa-user-circle",
+
         "dashboard.useractivitylog":
             "fas fa-user-clock",
 
-        "auth.user":
-            "fas fa-users",
+
+        # AI Management
+        "dashboard.aigeneration":
+            "fas fa-robot",
+
+        "dashboard.generatedimage":
+            "fas fa-wand-magic-sparkles",
+
+
+        # Chat
+        "dashboard.chatsession":
+            "fas fa-comments",
+
+        "dashboard.chatbotlog":
+            "fas fa-comment-dots",
+
+
+        # Commerce
+        "dashboard.product":
+            "fas fa-box",
+
+        "dashboard.order":
+            "fas fa-shopping-cart",
+
+
+        # System
+        "dashboard.permissionrecord":
+            "fas fa-shield-halved",
 
         "auth.group":
             "fas fa-user-shield",
     },
 
+
+    # ========================================================
+    # CUSTOM CSS
+    # ========================================================
+
     "custom_css":
         "admin/css/mahashankh.css",
+
+
+    # ========================================================
+    # UI BUILDER
+    # ========================================================
 
     "show_ui_builder":
         False,
@@ -269,75 +412,32 @@ JAZZMIN_SETTINGS = {
 # JAZZMIN UI SETTINGS
 # ============================================================
 
+
+
 JAZZMIN_UI_TWEAKS = {
-
-    "theme":
-        "flatly",
-
-    "navbar_small_text":
-        False,
-
-    "footer_small_text":
-        False,
-
-    "body_small_text":
-        False,
-
-    "brand_small_text":
-        False,
-
-    "brand_colour":
-        "navbar-white",
-
-    "accent":
-        "accent-brown",
-
-    "navbar":
-        "navbar-white",
-
-    "no_navbar_border":
-        False,
-
-    "sidebar":
-        "sidebar-light-brown",
-
-    "sidebar_nav_small_text":
-        False,
-
-    "sidebar_disable_expand":
-        False,
-
-    "sidebar_nav_child_indent":
-        True,
-
-    "sidebar_nav_compact_style":
-        False,
-
-    "sidebar_nav_legacy_style":
-        False,
-
-    "sidebar_nav_flat_style":
-        True,
-
+    "theme": "default", 
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": False,
+    "accent": "accent-warning",
+    "navbar": "navbar-dark",
+    "no_navbar_border": True,
+    "sidebar": "sidebar-dark-primary",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": True,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": True,
     "button_classes": {
-
-        "primary":
-            "btn-outline-brown",
-
-        "secondary":
-            "btn-outline-secondary",
-
-        "info":
-            "btn-outline-info",
-
-        "warning":
-            "btn-outline-warning",
-
-        "danger":
-            "btn-outline-danger",
-
-        "success":
-            "btn-outline-success",
+        "primary": "btn-primary",
+        "secondary": "btn-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success",
     },
 }
 
@@ -358,11 +458,21 @@ LOGIN_URL = '/'
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 7
 
 SESSION_SAVE_EVERY_REQUEST = True
+
+
+# ============================================================
+# STORAGE
+# ============================================================
+
 STORAGES = {
+
     "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "BACKEND":
+            "django.core.files.storage.FileSystemStorage",
     },
+
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        "BACKEND":
+            "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }

@@ -8,8 +8,8 @@ from .models import (
     Category,
     UserProfile,
     UserActivityLog,
-    AIGeneration,
-    GeneratedImage,
+    AIWallpaperStyle,
+    AIWallpaperGeneration,
     ChatSession,
     ChatbotLog,
     Order,
@@ -39,9 +39,9 @@ def admin_dashboard_data(request):
 
     total_categories = Category.objects.count()
 
-    total_ai_generations = AIGeneration.objects.count()
+    total_ai_styles = AIWallpaperStyle.objects.count()
 
-    total_generated_images = GeneratedImage.objects.count()
+    total_ai_generations = AIWallpaperGeneration.objects.count()
 
     total_orders = Order.objects.count()
 
@@ -108,7 +108,7 @@ def admin_dashboard_data(request):
     )
 
     monthly_ai = (
-        AIGeneration.objects
+        AIWallpaperGeneration.objects
         .filter(created_at__date__lte=today)
         .annotate(month=TruncMonth("created_at"))
         .values("month")
@@ -351,16 +351,7 @@ def admin_dashboard_data(request):
     # ============================================================
 
     recent_ai = (
-        AIGeneration.objects
-        .order_by("-created_at")[:6]
-    )
-
-    # ============================================================
-    # RECENT GENERATED AI IMAGES
-    # ============================================================
-
-    recent_generated_images = (
-        GeneratedImage.objects
+        AIWallpaperGeneration.objects
         .order_by("-created_at")[:6]
     )
 
@@ -461,11 +452,11 @@ def admin_dashboard_data(request):
         "dashboard_total_categories":
             total_categories,
 
+        "dashboard_total_ai_styles":
+            total_ai_styles,
+
         "dashboard_total_ai":
             total_ai_generations,
-
-        "dashboard_total_images":
-            total_generated_images,
 
         "dashboard_total_orders":
             total_orders,
@@ -529,9 +520,6 @@ def admin_dashboard_data(request):
 
         "recent_ai":
             recent_ai,
-
-        "recent_generated_images":
-            recent_generated_images,
 
         "recent_activity":
             recent_activity,

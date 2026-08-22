@@ -1,451 +1,416 @@
 /* ============================================================
-   MAHASHANKH ADMIN DASHBOARD
-   Main Dashboard Styling
+   MAHASHANKH Theme variables & Green-to-Brown Force Overrides
    ============================================================ */
 
-.mah-dashboard {
-    width: 100%;
-    padding: 10px 5px 40px;
-    box-sizing: border-box;
-    font-family: "Segoe UI", Arial, sans-serif;
+:root {
+    --mah-brown-dark: #3f281c;
+    --mah-brown: #5d4030;
+    --mah-brown-medium: #704936;
+    --mah-brown-light: #8a6650;
+    --mah-bg-light: #f9f6f0;
 }
 
-/* ============================================================
-   HEADER
-   ============================================================ */
-
-.dashboard-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #ffffff;
-    border-radius: 14px;
-    padding: 22px 26px;
-    margin-bottom: 20px;
-    border: 1px solid #eadfd5;
-    box-shadow: 0 4px 18px rgba(70, 45, 30, 0.06);
+/* Force Green / Primary / Success / Info UI to Brown */
+.bg-success, .bg-primary, .bg-info, .badge-success, .badge-primary, .badge-info,
+.btn-primary, .btn-success, .btn-info,
+.submit-row input[type="submit"], input[type="submit"].default, button[type="submit"] {
+    background-color: var(--mah-brown) !important;
+    border-color: var(--mah-brown) !important;
+    color: #ffffff !important;
 }
 
-.dashboard-header h1 {
-    margin: 0;
-    font-size: 28px;
+.btn-primary:hover, .btn-success:hover, .btn-info:hover,
+.submit-row input[type="submit"]:hover, input[type="submit"].default:hover {
+    background-color: var(--mah-brown-dark) !important;
+    border-color: var(--mah-brown-dark) !important;
+}
+
+a, a.text-success, .text-success, .text-primary, .text-info {
+    color: var(--mah-brown) !important;
+}
+
+/* Light Theme Navigation & Sidebar Base */
+.main-sidebar, .sidebar-dark-primary, .brand-link {
+    background-color: var(--mah-brown-dark) !important;
+}
+
+.main-sidebar .nav-link.active, .nav-pills .nav-link.active {
+    background-color: var(--mah-brown-medium) !important;
+    color: #ffffff !important;
+}
+
+.mah-section-heading {
+    color: #ffffff !important;
+    font-size: 11px;
     font-weight: 700;
-    color: #4b2e20;
-}
-
-.dashboard-header p {
-    margin: 6px 0 0;
-    color: #806b5d;
-    font-size: 14px;
-}
-
-.analytics-badge {
-    background: #f7efe8;
-    color: #70462f;
-    padding: 10px 16px;
-    border-radius: 30px;
-    font-size: 13px;
-    font-weight: 600;
-    border: 1px solid #ead9cc;
-}
-
-/* ============================================================
-   STAT CARDS
-   ============================================================ */
-
-.dashboard-stats {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 16px;
-    margin-bottom: 20px;
-}
-
-.stat-card {
-    position: relative;
-    background: #ffffff;
-    border: 1px solid #eadfd5;
-    border-radius: 14px;
-    padding: 20px;
-    min-height: 125px;
-    box-shadow: 0 4px 18px rgba(70, 45, 30, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    overflow: hidden;
-}
-
-.stat-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(70, 45, 30, 0.10);
-}
-
-.stat-card h3 {
-    margin: 0 0 12px;
-    color: #806b5d;
-    font-size: 13px;
-    font-weight: 600;
+    padding: 12px 15px 4px;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
-    letter-spacing: 0.4px;
-}
-
-.stat-number {
-    color: #4b2e20;
-    font-size: 30px;
-    font-weight: 700;
-    line-height: 1.1;
-}
-
-.stat-description {
-    margin-top: 8px;
-    color: #9b897c;
-    font-size: 12px;
-}
-
-.stat-icon {
-    position: absolute;
-    right: 18px;
-    top: 18px;
-    width: 40px;
-    height: 40px;
-    border-radius: 11px;
-    background: #f5ebe3;
-    color: #70462f;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 17px;
 }
 
 /* ============================================================
-   COMMON DASHBOARD CARD
+   TOGGLE BUTTON STYLE
    ============================================================ */
 
-.dashboard-card {
-    background: #ffffff;
-    border: 1px solid #eadfd5;
-    border-radius: 14px;
-    padding: 20px;
-    box-shadow: 0 4px 18px rgba(70, 45, 30, 0.05);
-    box-sizing: border-box;
+#mh-theme-toggle {
+    position: fixed !important;
+    top: 10px !important;
+    right: 80px !important;
+    width: 38px !important;
+    height: 38px !important;
+    border: 1px solid #e3d8cc !important;
+    border-radius: 50% !important;
+    background: #ffffff !important;
+    color: #5d4030 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    z-index: 999999 !important;
+    box-shadow: 0 3px 12px rgba(50, 35, 20, 0.12) !important;
+    transition: transform 0.2s ease !important;
 }
 
+#mh-theme-toggle:hover {
+    transform: scale(1.08) !important;
+}
+
+/* ============================================================
+   DARK MODE ULTRA FORCE OVERRIDES
+   ============================================================ */
+
+html.mh-dark,
+html.mh-dark body,
+html.mh-dark .wrapper,
+html.mh-dark .content-wrapper,
+html.mh-dark .main-sidebar,
+html.mh-dark .main-header,
+html.mh-dark .main-footer,
+html.mh-dark .content,
+html.mh-dark .content-header,
+html.mh-dark .container-fluid {
+    background-color: #171411 !important;
+    background: #171411 !important;
+    color: #f2ebe4 !important;
+    border-color: #40352d !important;
+}
+
+html.mh-dark .main-header,
+html.mh-dark .navbar,
+html.mh-dark .navbar-white,
+html.mh-dark .navbar-light,
+html.mh-dark nav.main-header,
+html.mh-dark .main-header .nav-link,
+html.mh-dark .main-header .navbar-nav {
+    background-color: #211c18 !important;
+    background: #211c18 !important;
+    color: #f2ebe4 !important;
+    border-bottom: 1px solid #40352d !important;
+    box-shadow: none !important;
+}
+
+html.mh-dark *,
+html.mh-dark *:before,
+html.mh-dark *:after {
+    border-color: #40352d !important;
+}
+
+html.mh-dark .dashboard-header,
+html.mh-dark .content-header,
+html.mh-dark header,
+html.mh-dark div[class*="header"],
+html.mh-dark .bg-white,
+html.mh-dark .bg-light {
+    background-color: #211c18 !important;
+    background: #211c18 !important;
+    color: #f2ebe4 !important;
+}
+
+html.mh-dark .stat-card span,
+html.mh-dark .stat-card div,
+html.mh-dark .stat-icon,
+html.mh-dark .info-box-icon,
+html.mh-dark .small-box-footer,
+html.mh-dark div[class*="icon"],
+html.mh-dark span[class*="icon"],
+html.mh-dark div[class*="box-"] {
+    background-color: #2c2520 !important;
+    background: #2c2520 !important;
+    color: #f2ebe4 !important;
+    border-color: #40352d !important;
+}
+
+html.mh-dark .main-sidebar,
+html.mh-dark .sidebar,
+html.mh-dark .brand-link {
+    background-color: #211c18 !important;
+    border-color: #40352d !important;
+}
+
+html.mh-dark div,
+html.mh-dark section,
+html.mh-dark .card,
+html.mh-dark .card-body,
+html.mh-dark .card-header,
+html.mh-dark .card-footer,
+html.mh-dark .stat-card,
+html.mh-dark .dashboard-card,
+html.mh-dark .country-map-card,
+html.mh-dark .user-map-card,
+html.mh-dark .recent-ai-activity,
+html.mh-dark .recent-user-activity,
+html.mh-dark .recent-item,
+html.mh-dark .small-box,
+html.mh-dark .info-box,
+html.mh-dark .profit-loss-card,
+html.mh-dark .order-status-card {
+    background-color: #211c18 !important;
+    color: #f2ebe4 !important;
+    border-color: #40352d !important;
+}
+
+html.mh-dark h1, html.mh-dark h2, html.mh-dark h3, 
+html.mh-dark h4, html.mh-dark h5, html.mh-dark h6,
+html.mh-dark p, html.mh-dark span, html.mh-dark label,
+html.mh-dark td, html.mh-dark th, html.mh-dark a,
+html.mh-dark .recent-item-title, html.mh-dark .country-name {
+    color: #f2ebe4 !important;
+}
+
+html.mh-dark .text-muted,
+html.mh-dark small,
+html.mh-dark .recent-item-meta,
+html.mh-dark .stat-description,
+html.mh-dark .dashboard-empty {
+    color: #c9bdb1 !important;
+}
+
+/* MAP FILTER & CHARTS */
+html.mh-dark .country-map-card .plotly .main-svg,
+html.mh-dark .user-map-card .plotly .main-svg,
+html.mh-dark div[class*="-map"] .plotly .main-svg {
+    filter: invert(0.88) hue-rotate(180deg) brightness(0.9) contrast(1.1) !important;
+}
+
+html.mh-dark .plotly .cbaxis text,
+html.mh-dark .plotly .cbtitle,
+html.mh-dark .plotly .infolayer {
+    filter: invert(1) hue-rotate(180deg) !important;
+}
+
+html.mh-dark .leaflet-tile-container img,
+html.mh-dark .leaflet-tile {
+    filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.2) !important;
+}
+
+html.mh-dark canvas,
+html.mh-dark svg text,
+html.mh-dark .chartjs-render-monitor,
+html.mh-dark .apexcharts-text,
+html.mh-dark .apexcharts-title-text,
+html.mh-dark .apexcharts-legend-text {
+    color: #f2ebe4 !important;
+    fill: #f2ebe4 !important;
+}
+
+html.mh-dark table,
+html.mh-dark thead,
+html.mh-dark tbody,
+html.mh-dark tr,
+html.mh-dark th,
+html.mh-dark td,
+html.mh-dark .dashboard-table {
+    background-color: #211c18 !important;
+    color: #f2ebe4 !important;
+    border-color: #40352d !important;
+}
+
+html.mh-dark thead th,
+html.mh-dark .dashboard-card-header,
+html.mh-dark .card-header {
+    background-color: #29221d !important;
+}
+
+html.mh-dark input,
+html.mh-dark select,
+html.mh-dark textarea,
+html.mh-dark .form-control,
+html.mh-dark .form-control-sidebar {
+    background-color: #29221d !important;
+    color: #f2ebe4 !important;
+    border-color: #51443a !important;
+}
+
+html.mh-dark #mh-theme-toggle {
+    background: #302821 !important;
+    color: #f2ebe4 !important;
+    border-color: #51443a !important;
+}
+
+/* LOGIN PAGE FIXES */
+.login-box .login-logo,
+.login-logo img,
+.brand-image,
+.login-box-msg + .text-center,
+.login-box .brand-link {
+    display: none !important;
+}
+
+.login-box {
+    margin-top: 5vh !important;
+}
+
+/* ============================================================
+   SIDEBAR ADMIN TEXT PURE WHITE FIX
+   ============================================================ */
+
+.main-sidebar,
+.main-sidebar *,
+.main-sidebar a,
+.main-sidebar p,
+.main-sidebar span,
+.main-sidebar i,
+.main-sidebar div,
+.main-sidebar .user-panel,
+.main-sidebar .user-panel *,
+.main-sidebar .nav-item,
+.main-sidebar .nav-link,
+.main-sidebar .nav-link p,
+.main-sidebar .nav-link i,
+.main-sidebar .nav-header,
+.main-sidebar .mah-section-heading,
+.main-sidebar .brand-link,
+.main-sidebar .brand-link *,
+.main-sidebar .brand-text,
+html.mh-dark .main-sidebar *,
+html.mh-dark .main-sidebar a,
+html.mh-dark .main-sidebar p,
+html.mh-dark .main-sidebar span,
+html.mh-dark .main-sidebar .user-panel * {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    opacity: 1 !important;
+    filter: none !important;
+    text-shadow: none !important;
+}
+
+.main-sidebar .nav-sidebar .nav-link:hover,
+html.mh-dark .main-sidebar .nav-sidebar .nav-link:hover {
+    background-color: #5d4030 !important;
+}
+
+.main-sidebar .nav-sidebar .nav-link.active,
+html.mh-dark .main-sidebar .nav-sidebar .nav-link.active {
+    background-color: #704936 !important;
+}
+
+/* ============================================================
+   TOP RIGHT NAVBAR GEAR & USER ICON ABSOLUTE LIGHT/DARK OVERRIDE
+   ============================================================ */
+
+/* Light Mode Header Icons & Dropdowns */
+body:not(.mh-dark) .main-header,
+body:not(.mh-dark) .main-header .navbar-nav,
+body:not(.mh-dark) .main-header .navbar-nav *,
+body:not(.mh-dark) .main-header .navbar-custom-menu,
+body:not(.mh-dark) .main-header .navbar-custom-menu *,
+body:not(.mh-dark) .main-header .user-menu,
+body:not(.mh-dark) .main-header .user-menu * {
+    color: #3f281c !important;
+    fill: #3f281c !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Remove White Background Containers in Light Mode */
+body:not(.mh-dark) .main-header .nav-item,
+body:not(.mh-dark) .main-header .nav-link,
+body:not(.mh-dark) .main-header .user-menu {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Force image/avatar icons in Light Mode to be visible */
+body:not(.mh-dark) .main-header img {
+    filter: brightness(0.2) !important;
+    opacity: 1 !important;
+}
+
+/* Dropdown Popup Menu */
+.main-header .dropdown-menu {
+    background-color: #ffffff !important;
+    border: 1px solid #e3d8cc !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15) !important;
+    z-index: 9999999 !important;
+}
+
+.main-header .dropdown-menu * {
+    color: #3f281c !important;
+}
+
+/* Dark Mode Overrides */
+html.mh-dark .main-header .navbar-nav *,
+html.mh-dark .main-header .navbar-custom-menu *,
+html.mh-dark .main-header .user-menu * {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}
+
+html.mh-dark .main-header img {
+    filter: none !important;
+}
+
+html.mh-dark .main-header .dropdown-menu {
+    background-color: #211c18 !important;
+    border-color: #40352d !important;
+}
+
+html.mh-dark .main-header .dropdown-menu * {
+    color: #f2ebe4 !important;
+}
+
+/* ============================================================
+   TOP NAVBAR ICONS & CHART TITLE OVERLAP FIX
+   ============================================================ */
+
+/* 1. Force top navbar right menu icons to display properly in Light Mode */
+body:not(.mh-dark) .main-header .navbar-nav.ml-auto .nav-link,
+body:not(.mh-dark) .main-header .navbar-nav.ml-auto i,
+body:not(.mh-dark) .main-header .navbar-nav.ml-auto svg,
+body:not(.mh-dark) .main-header .navbar-nav.ml-auto path,
+body:not(.mh-dark) .main-header .navbar-custom-menu * {
+    color: #3f281c !important;
+    fill: #3f281c !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
+}
+
+/* 2. Fix Growth Overview Chart Title Overlap (Line Height & Position Fix) */
+.card-header, 
+div[class*="header"], 
 .dashboard-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
 }
 
-.dashboard-card-header h2,
-.dashboard-card-header h3 {
-    margin: 0;
-    color: #4b2e20;
-    font-size: 17px;
-    font-weight: 700;
+.card-title, 
+h3.card-title, 
+.dashboard-card-title {
+    line-height: 1.4 !important;
+    margin-bottom: 4px !important;
+    display: block !important;
+    position: relative !important;
 }
 
-.dashboard-card-header span {
-    color: #9b897c;
-    font-size: 12px;
-}
-
-/* ============================================================
-   GROWTH + DONUT
-   ============================================================ */
-
-.dashboard-row {
-    display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.chart-container {
-    position: relative;
-    width: 100%;
-    height: 320px;
-}
-
-.chart-container-small {
-    position: relative;
-    width: 100%;
-    height: 280px;
-}
-
-/* ============================================================
-   CATEGORY + COUNTRY MAP
-   ============================================================ */
-
-.category-country-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.category-chart {
-    min-height: 360px;
-}
-
-.country-map-card {
-    min-height: 360px;
-    overflow: hidden;
-}
-
-.country-map-image {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-    display: block;
-    border: 1px solid #eee0d6;
-}
-
-/* ============================================================
-   ORDER STATUS + USER COUNTRY MAP
-   ============================================================ */
-
-.order-map-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.order-status-card {
-    min-height: 360px;
-}
-
-.order-status-chart {
-    height: 300px;
-    position: relative;
-}
-
-.user-map-card {
-    min-height: 360px;
-    overflow: hidden;
-}
-
-.user-map-image {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-    display: block;
-    border: 1px solid #eee0d6;
-}
-
-/* ============================================================
-   PROFIT / LOSS
-   ============================================================ */
-
-.profit-loss-card {
-    margin-bottom: 20px;
-}
-
-.profit-chart {
-    height: 330px;
-    position: relative;
-}
-
-/* ============================================================
-   RECENT DATA
-   ============================================================ */
-
-.recent-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(300px, 1fr);
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.recent-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.recent-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px;
-    border-radius: 10px;
-    background: #faf7f4;
-    border: 1px solid #eee3db;
-}
-
-.recent-item-image {
-    width: 52px;
-    height: 42px;
-    border-radius: 7px;
-    object-fit: cover;
-    flex-shrink: 0;
-}
-
-.recent-item-content {
-    min-width: 0;
-    flex: 1;
-}
-
-.recent-item-title {
-    color: #4b2e20;
-    font-size: 13px;
-    font-weight: 600;
-    margin-bottom: 3px;
-}
-
-.recent-item-meta {
-    color: #948276;
-    font-size: 11px;
-}
-
-/* ============================================================
-   TOP COUNTRIES
-   ============================================================ */
-
-.country-list {
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-}
-
-.country-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #faf7f4;
-    border: 1px solid #eee3db;
-    padding: 11px 13px;
-    border-radius: 9px;
-}
-
-.country-name {
-    color: #4b2e20;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.country-count {
-    color: #70462f;
-    font-size: 12px;
-    font-weight: 700;
-}
-
-/* ============================================================
-   TABLES
-   ============================================================ */
-
-.dashboard-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.dashboard-table th {
-    text-align: left;
-    color: #806b5d;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-    padding: 11px 10px;
-    border-bottom: 1px solid #eadfd5;
-}
-
-.dashboard-table td {
-    color: #594337;
-    font-size: 13px;
-    padding: 12px 10px;
-    border-bottom: 1px solid #f0e8e2;
-}
-
-.dashboard-table tr:last-child td {
-    border-bottom: none;
-}
-
-/* ============================================================
-   STATUS BADGES
-   ============================================================ */
-
-.status-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 5px 9px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 600;
-}
-
-.status-pending {
-    background: #fff4df;
-    color: #9a6500;
-}
-
-.status-processing {
-    background: #eeeaff;
-    color: #5c45a5;
-}
-
-.status-completed {
-    background: #e8f7ed;
-    color: #287844;
-}
-
-.status-cancelled {
-    background: #fbeaea;
-    color: #a33d3d;
-}
-
-/* ============================================================
-   EMPTY STATE
-   ============================================================ */
-
-.dashboard-empty {
-    text-align: center;
-    padding: 35px 15px;
-    color: #9b897c;
-    font-size: 13px;
-}
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-
-@media (max-width: 1400px) {
-
-    .dashboard-stats {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .dashboard-row,
-    .category-country-row,
-    .order-map-row,
-    .recent-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 900px) {
-
-    .dashboard-stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .dashboard-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-}
-
-@media (max-width: 600px) {
-
-    .dashboard-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .dashboard-header h1 {
-        font-size: 22px;
-    }
-
-    .dashboard-card {
-        padding: 14px;
-    }
+.card-title small, 
+.card-subtitle, 
+span.text-muted, 
+p.text-muted {
+    display: block !important;
+    line-height: 1.3 !important;
+    margin-top: 2px !important;
+    position: relative !important;
+    clear: both !important;
 }
